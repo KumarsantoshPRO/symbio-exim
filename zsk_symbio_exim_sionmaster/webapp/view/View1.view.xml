@@ -1,0 +1,391 @@
+<mvc:View
+    controllerName="zpro.sk.symbio.exim.sion.zsksymbioeximsionmaster.controller.View1"
+    height="100%"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.f"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:svm="sap.ui.comp.smartvariants"
+    xmlns:plugins="sap.m.plugins"
+    xmlns:columnmenu="sap.m.table.columnmenu"
+    xmlns:sap.ui.fl="sap.ui.fl"
+    xmlns:sap.ui.dt="sap.ui.dt"
+    xmlns:vm="sap.ui.fl.variants"
+    xmlns:dnd="sap.ui.core.dnd"
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    xmlns:u="sap.ui.unified"
+>
+    <f:DynamicPage
+        preserveHeaderStateOnScroll="true"
+        showFooter="true"
+        fitContent="true"
+    >
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <!-- <svm:SmartVariantManagement
+                        id="svm"
+                        showExecuteOnSelection="true"
+                    /> -->
+                    <Title text="SION Master">
+                        <content />
+                    </Title>
+                </f:heading>
+                <!-- <f:expandedContent>
+                    <Label
+                        id="expandedLabel"
+                        text="No filters active"
+                    />
+                </f:expandedContent>
+                <f:snappedContent>
+                    <Label
+                        id="snappedLabel"
+                        text="No filters active"
+                    />
+                </f:snappedContent> -->
+            </f:DynamicPageTitle>
+        </f:title>
+
+        <f:header>
+            <f:DynamicPageHeader>
+                <f:content>
+                    <fb:FilterBar
+                        id="filterbar"
+                        persistencyKey="myPersKey"
+                        useToolbar="false"
+                        search=".onSearch"
+                        filterChange=".onFilterChange"
+                        afterVariantLoad=".onAfterVariantLoad"
+                        visible="{myProperties>/view}"
+                    >
+                        <fb:filterGroupItems>
+                            <fb:FilterGroupItem
+                                name="HSNCode"
+                                label="HSN Code"
+                                groupName="Group1"
+                                visibleInFilterBar="true"
+                            >
+                                <fb:control>
+                                    <Input showValueHelp="true" />
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem
+                                name="SIONMaster"
+                                label="SION Master"
+                                groupName="Group1"
+                                visibleInFilterBar="true"
+                            >
+                                <fb:control>
+                                    <Input showValueHelp="true" />
+                                </fb:control>
+                            </fb:FilterGroupItem>
+
+                            <fb:FilterGroupItem
+                                name="MaterialNumber"
+                                label="Material Number"
+                                groupName="Group1"
+                                visibleInFilterBar="true"
+                            >
+                                <fb:control>
+                                    <Input showValueHelp="true" />
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                        </fb:filterGroupItems>
+                    </fb:FilterBar>
+                </f:content>
+            </f:DynamicPageHeader>
+        </f:header>
+
+        <f:content>
+            <Table
+                id="SIONTable"
+                items="{path: 'oModelForTable>/'}"
+                ariaLabelledBy="title"
+                fixedLayout="Strict"
+                autoPopinMode="true"
+                growing="true"
+                sticky="ColumnHeaders,HeaderToolbar"
+                popinLayout="GridSmall"
+                mode="{myProperties>/tableMode}"
+                delete="onItemsTableDelete"
+                backgroundDesign="Solid"
+                alternateRowColors="true"
+            >
+                <headerToolbar>
+                    <OverflowToolbar>
+                        <Title
+                            id="title"
+                            text="Master Items"
+                        />
+                        <Button
+                            icon="sap-icon://action-settings"
+                            press="openPersoDialog"
+                            tooltip="Settings"
+                            visible="{myProperties>/view}"
+                        />
+                        <ToolbarSeparator visible="false" />
+                        <vm:VariantManagement
+                            id="p13nVm"
+                            for="SIONTable"
+                            visible="false"
+                        />
+                        <ToolbarSpacer />
+                        <Button
+                            icon="sap-icon://download"
+                            press="onExport"
+                            visible="{myProperties>/view}"
+                        />
+                        <u:FileUploader
+                            id="FileUploaderId"
+                            buttonText="Mass Upload"
+                            sameFilenameAllowed="true"
+                            buttonOnly="true"
+                            fileType="XLSX,xlsx"
+                            icon="sap-icon://excel-attachment"
+                            change="onUpload"
+                            tooltip="Excel Upload"
+                            visible="{myProperties>/new}"
+                        />
+                        <Button
+                            icon="sap-icon://add-product"
+                            press="onAddNewItemPress"
+                            tooltip="Add New Item"
+                            type="Emphasized"
+                            visible="{myProperties>/new}"
+                        />
+                        <Button
+                            icon="sap-icon://add"
+                            press="onAddNewButtonPress"
+                            tooltip="Add New Items"
+                            type="Accept"
+                            visible="{myProperties>/view}"
+                        />
+                        <Button
+                            icon="sap-icon://edit"
+                            press="onEditButtonPress"
+                            tooltip="Edit"
+                            type="Attention"
+                            visible="{myProperties>/view}"
+                        />
+                        <!-- <Button
+                            icon="sap-icon://delete"
+                            press="onDeleteButtonPress"
+                            tooltip="Delete Items"
+                            type="Negative"
+                            visible="{myProperties>/view}"
+                        /> -->
+                    </OverflowToolbar>
+                </headerToolbar>
+
+                <infoToolbar>
+                    <OverflowToolbar
+                        id="filterInfo"
+                        visible="false"
+                        design="Info"
+                        active="true"
+                        press="onFilterInfoPress"
+                    >
+                        <Text
+                            id="filterInfoText"
+                            wrapping="false"
+                            text="Table filter active"
+                        />
+                        <ToolbarSpacer />
+                        <Button
+                            tooltip="Remove All Filters"
+                            icon="sap-icon://decline"
+                            type="Transparent"
+                            press="onClearFilterPress"
+                        />
+                    </OverflowToolbar>
+                </infoToolbar>
+
+                <dependents>
+                    <plugins:ColumnResizer columnResize="onColumnResize" />
+                    <columnmenu:Menu
+                        id="menu"
+                        beforeOpen="beforeOpenColumnMenu"
+                    >
+                        <columnmenu:QuickSort change="onSort">
+                            <columnmenu:items>
+                                <columnmenu:QuickSortItem />
+                            </columnmenu:items>
+                        </columnmenu:QuickSort>
+                        <columnmenu:QuickGroup change="onGroup">
+                            <columnmenu:items>
+                                <columnmenu:QuickGroupItem />
+                            </columnmenu:items>
+                        </columnmenu:QuickGroup>
+                        <columnmenu:items>
+                            <columnmenu:ActionItem
+                                icon="sap-icon://sort"
+                                label="Sort"
+                                press="onColumnHeaderItemPress"
+                            />
+                            <columnmenu:ActionItem
+                                icon="sap-icon://group-2"
+                                label="Group"
+                                press="onColumnHeaderItemPress"
+                            />
+                            <columnmenu:ActionItem
+                                icon="sap-icon://filter"
+                                label="Filter"
+                                press="onColumnHeaderItemPress"
+                            />
+                            <columnmenu:ActionItem
+                                icon="sap-icon://table-column"
+                                label="Columns"
+                                press="onColumnHeaderItemPress"
+                            />
+                        </columnmenu:items>
+                    </columnmenu:Menu>
+                </dependents>
+
+                <dragDropConfig>
+                    <dnd:DragDropInfo
+                        sourceAggregation="columns"
+                        targetAggregation="columns"
+                        dropPosition="Between"
+                        drop="onColumnMove"
+                    />
+                </dragDropConfig>
+
+                <noData>
+                    <IllustratedMessage />
+                </noData>
+
+                <columns>
+                    <Column
+                     headerMenu="menu"
+                        visible="{myProperties>/colView}"
+                    >
+                        <header>
+                            <Text text="Material Number" />
+                        </header>
+                    </Column>
+                    <Column
+                       headerMenu="menu"
+                        visible="{myProperties>/colView}"
+                    >
+                        <header>
+                            <Text text="Material Description " />
+                        </header>
+                    </Column>
+
+                    <Column
+                        app:p13nKey="HsnCode"
+                        headerMenu="menu"
+                        visible="{myProperties>/colView}"
+                    >
+                        <Text text="HSN Code" />
+                    </Column>
+                    <Column
+                        app:p13nKey="SionNo"
+                        headerMenu="menu"
+                        visible="{myProperties>/colView}"
+                    >
+                        <Text text="SION Number" />
+                    </Column>
+                    <Column
+                        app:p13nKey="SionDesc"
+                        headerMenu="menu"
+                        visible="{myProperties>/colView}"
+                    >
+                        <Text text="SION Description" />
+                    </Column>
+                    <Column
+                        
+                         
+                        visible="{myProperties>/colNew}"
+                    >
+                        <Text text="HSN Code" />
+                    </Column>
+                    <Column
+                           
+                        visible="{myProperties>/colNew}"
+                    >
+                        <Text text="SION Number" />
+                    </Column>
+                    <Column
+                        
+                         
+                        visible="{myProperties>/colNew}"
+                    >
+                        <Text text="SION Description" />
+                    </Column>
+                </columns>
+
+                <items>
+                    <ColumnListItem>
+                        <Text
+                            text="{MaterialNumber}"
+                            visible="{myProperties>/view}"
+                        />
+                        <Text
+                            text="{MaterialDescription}"
+                            visible="{myProperties>/view}"
+                        />
+                        <Text
+                            text="{oModelForTable>HsnCode}"
+                            visible="{myProperties>/colView}"
+                        />
+                        <Text
+                            text="{oModelForTable>SionNo}"
+                            visible="{myProperties>/colView}"
+                        />
+                        <Text
+                            text="{oModelForTable>SionDesc}"
+                            visible="{myProperties>/colView}"
+                        />
+                        <Input
+                            value="{oModelForTable>HsnCode}"
+                            visible="{myProperties>/colNew}"
+                            showValueHelp="true"
+                        />
+                        <Input
+                            value="{oModelForTable>SionNo}"
+                            visible="{myProperties>/colNew}"
+                            showValueHelp="true"
+                        />
+                        <Input
+                            value="{oModelForTable>SionDesc}"
+                            visible="{myProperties>/colNew}"
+                        />
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </f:content>
+
+        <f:footer>
+            <OverflowToolbar visible="{myProperties>/footer}">
+                <ToolbarSpacer />
+                <Button
+                    type="Accept"
+                    text="Create"
+                    visible="{myProperties>/new}"
+                    press="onCreateButtonPress"
+                />
+                <Button
+                    type="Reject"
+                    text="Cancel"
+                    press="onCancelButtonPress"
+                    visible="{myProperties>/new}"
+                    ariaHasPopup="Dialog"
+                />
+                <Button
+                    type="Accept"
+                    text="Save"
+                    press="onSaveButtonPress"
+                    visible="{myProperties>/edit}"
+                />
+                <Button
+                    type="Reject"
+                    text="Cancel"
+                    press="onCancelButtonPress"
+                    visible="{myProperties>/edit}"
+                />
+            </OverflowToolbar>
+        </f:footer>
+    </f:DynamicPage>
+</mvc:View>

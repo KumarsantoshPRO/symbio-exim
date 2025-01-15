@@ -1,0 +1,30 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Popover
+        id="myPopover"
+        title="Discard the changes"
+        class="sapUiResponsivePadding--header sapUiResponsivePadding--footer"
+        placement="Top"
+        initialFocus="Discard"
+    >
+        <footer>
+            <OverflowToolbar>
+                <ToolbarSpacer />
+                <Button
+                id="Discard"
+                    text="Discard"
+                    press="onDiscard"
+                    type="Negative"
+                />
+                <Button
+                    text="No"
+                    press="onDiscardNo"
+                    type="Success"
+                />
+            </OverflowToolbar>
+        </footer>
+      
+    </Popover>
+</core:FragmentDefinition>
