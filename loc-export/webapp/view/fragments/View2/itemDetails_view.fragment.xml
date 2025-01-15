@@ -1,0 +1,186 @@
+<core:FragmentDefinition
+    height="100%"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:table="sap.ui.table"
+    xmlns:sap.ui.fl="sap.ui.fl"
+>
+    <table:Table
+        id="ImportTableView"
+        sort="onSort"
+        columnResize="onColumnResize"
+        columnMove="onColumnMove"
+        rowMode="Auto"
+        ariaLabelledBy="title"
+        sap.ui.fl:flexibility="sap/m/flexibility/EngineFlex"
+        selectionMode="None"
+        selectionBehavior="Row"
+        rows="{oModelForItemTable>/results/}"
+        showColumnVisibilityMenu="true"
+        enableColumnFreeze="false"
+        enableCellFilter="true"
+        columnSelect="onColumnSelect"
+        cellContextmenu="onProductIdCellContextMenu"
+        enableGrouping="true"
+        rowSelectionChange="onShowLCDetails"
+    >
+        <table:extension>
+            <OverflowToolbar style="Clear">
+                <Title text="{myPropertyValues>/title}" />
+                <ToolbarSpacer />
+                <Button
+                    text="Create"
+                    press="onAddNewLOCItem"
+                    type="Transparent"
+                    tooltip="Create new"
+                    visible="false"
+                />
+                <Button
+                    text="Delete"
+                    press="onDeleteRow"
+                    type="Transparent"
+                    enabled="false"
+                    visible="false"
+                />
+                <Button
+                    icon="sap-icon://action-settings"
+                    press="openPersoDialog"
+                    visible="false"
+                />
+                <VBox visible="false">
+                    <SegmentedButton selectedKey="less">
+                        <items>
+                            <SegmentedButtonItem
+                                icon="sap-icon://detail-less"
+                                key="less"
+                            />
+                            <SegmentedButtonItem
+                                icon="sap-icon://detail-more"
+                            />
+                        </items>
+                    </SegmentedButton>
+                </VBox>
+                <Button
+                    icon="sap-icon://excel-attachment"
+                    press="onExport"
+                    visible="false"
+                />
+            </OverflowToolbar>
+        </table:extension>
+
+        <table:noData>
+            <IllustratedMessage enableVerticalResponsiveness="true" />
+        </table:noData>
+
+        <table:columns>
+            <table:Column
+                id="LcNo"
+                sortProperty="LcNo"
+                headerMenu="menu"
+            >
+                <Label text="LC Number" />
+                <table:template>
+                    <Label text="{oModelForItemTable>LcNo}" /> 
+                </table:template>
+            </table:Column>
+            <table:Column
+                id="SalesOrder"
+                sortProperty="SalesOrder"
+                headerMenu="menu"
+            >
+                <Label text="Sales Order" />
+                <table:template>
+                    <Label text="{oModelForItemTable>SalesOrder}" />
+                </table:template>
+            </table:Column>
+
+            <table:Column
+                id="Posnr"
+                sortProperty="Posnr"
+                headerMenu="menu"
+            >
+                <Label text="SO Item" />
+                <table:template>
+                    <Label text="{oModelForItemTable>Posnr}" />
+                </table:template>
+            </table:Column>
+            <table:Column
+                id="Matnr"
+                sortProperty="Matnr"
+                headerMenu="menu"
+            >
+                <Label text="Material Number" />
+                <table:template>
+                    <Label text="{oModelForItemTable>Matnr}" />
+                </table:template>
+            </table:Column>
+            <table:Column
+                id="MatDesc"
+                sortProperty="MatDesc"
+                headerMenu="menu"
+            >
+                <Label text="Material Description" />
+                <table:template>
+                    <Label text="{oModelForItemTable>MatDesc}" />
+                </table:template>
+            </table:Column>
+            <table:Column
+                id="Meins"
+                sortProperty="Meins"
+                headerMenu="menu"
+            >
+                <Label text="UoM" />
+                <table:template>
+                    <Label text="{oModelForItemTable>Meins}" />
+                </table:template>
+            </table:Column>
+
+            <table:Column
+                id="LcQty"
+                sortProperty="LcQty"
+                headerMenu="menu"
+            >
+                <Label text="LC Quantity" />
+                <table:template>
+                    <Label text="{oModelForItemTable>LcQty}" />
+                </table:template>
+            </table:Column>
+            <table:Column
+                id="LcCurrency"
+                sortProperty="LcCurrency"
+                headerMenu="menu"
+            >
+                <Label text="LC Currency" />
+                <table:template>
+                    <Label text="{oModelForItemTable>LcCurrency}" />
+                </table:template>
+            </table:Column>
+            <table:Column
+                id="UnitPrice"
+                sortProperty="UnitPrice"
+                headerMenu="menu"
+            >
+                <Label text="Unit Price" />
+                <table:template>
+                    <ObjectNumber
+                        number="{oModelForItemTable>UnitPrice}"
+                        unit="{oModelForItemTable>LcCurrency}"
+                    />
+                </table:template>
+            </table:Column>
+            <table:Column
+                id="TotalVal"
+                sortProperty="TotalVal"
+                headerMenu="menu"
+            >
+                <Label text="Total Price" />
+                <table:template>
+                    <ObjectNumber
+                        number="{oModelForItemTable>TotalVal}"
+                        unit="{oModelForItemTable>LcCurrency}"
+                    />
+                </table:template>
+            </table:Column>
+        </table:columns>
+    </table:Table>
+</core:FragmentDefinition>

@@ -1,0 +1,23 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <SelectDialog
+        id="idSDCountryOfBLF4"
+        title="Country Of BL"
+        noDataText="No Data"
+        search="onValueHelpSearch_CountryOfBL"
+        liveChange="onValueHelpSearch_CountryOfBL"
+        confirm="onValueHelpConfirm_CountryOfBL"
+        contentWidth="250px" 
+    >
+        <items>
+            <StandardListItem
+                id="idSLCountryOfBLValueHelp"
+                title="{CountryName}({Country})"
+                wrapping="true"
+                
+            />
+        </items>
+    </SelectDialog>
+</core:FragmentDefinition>

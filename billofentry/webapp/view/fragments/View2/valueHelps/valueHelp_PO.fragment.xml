@@ -1,0 +1,22 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <SelectDialog
+        id="idSDPOF4"
+        title="Invoice Number"
+        noDataText="No Data"
+        search="onValueHelpSearch_PO"
+        liveChange="onValueHelpSearch_PO"
+        confirm="onValueHelpConfirm_PO"
+        contentWidth="250px"
+    >
+        <items>
+            <StandardListItem
+                id="idSLPOValueHelp"
+                title="{PurchaseOrder}"
+                wrapping="true"
+            />
+        </items>
+    </SelectDialog>
+</core:FragmentDefinition>

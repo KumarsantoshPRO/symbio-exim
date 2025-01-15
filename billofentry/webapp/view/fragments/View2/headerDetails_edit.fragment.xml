@@ -1,0 +1,88 @@
+<core:FragmentDefinition
+    height="100%"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:form="sap.ui.layout.form"
+>
+    <form:SimpleForm
+        class="sapUiResponsiveContentPadding"
+        layout="ColumnLayout"
+        columnsL="3"
+        columnsM="3"
+        columnsXL="3"
+    >
+        <form:content>
+            <Label
+                text='Bill of Entry'
+                required="true"
+            />
+            <Input value='{oModelForHeader>/BillEntry}' />
+
+            <Label
+                text='Purchase Order No.'
+                required="true"
+            />
+            <Input value='{oModelForHeader>/PoNo}' />
+
+            <Label text='Supplier Invoice No.' />
+            <Input value='{oModelForHeader>/SupplierInvoiceNo}' />
+
+            <Label text='Supplier Code' />
+            <Input value='{oModelForHeader>/SupplierCode}' />
+
+            <Label text='Supplier Name' />
+            <Input value='{oModelForHeader>/SupplierName}' />
+
+            <Label text='BL No' />
+            <Input value='{oModelForHeader>/BlNo}' />
+
+            <Label text='Shipping Line' />
+            <Input value='{oModelForHeader>/ShippingLine}' />
+
+            <Label text='ICD' />
+            <Input value='{oModelForHeader>/Icd}' />
+
+            <Label text='Shipment Date' />
+            <DatePicker
+                value="{path:'oModelForHeader>/ShipmentDate', type: 'sap.ui.model.type.Date', formatOptions: {UTC: true}}"
+                displayFormat="dd/MM/yyyy"
+                valueFormat="dd/MM/yyyy"
+            />
+
+            <Label text='Currency' />
+            <Input value='{oModelForHeader>/Currency}' />
+
+            <Label text='Custom Duty Payble' />
+            <Input value='{oModelForHeader>/CustomDutyPayable}' />
+
+            <Label text='IGST' />
+            <Input value='{oModelForHeader>/Igst}' />
+
+            <Label text='Exchange Rate' />
+            <Input value='{oModelForHeader>/ExchangeRate}' />
+
+            <Label text='Container Number' />
+            <Input value='{oModelForHeader>/ContainerNo}' />
+
+            <Label text='LC' />
+            <Input value='{oModelForHeader>/Lc}' />
+
+            <Label text='Created By' />
+            <Input value='{oModelForHeader>/CreatedBy}' />
+
+            <Label text='Created Date' />
+            <DatePicker
+                value="{path:'oModelForHeader>/CreatedOn', type: 'sap.ui.model.type.Date', formatOptions: {UTC: true}}"
+                displayFormat="dd/MM/yyyy"
+                valueFormat="dd/MM/yyyy"
+                editable="false"
+            />
+
+            <Label text='Created time' />
+            <TimePicker
+                value="{path:'oModelForHeader>/CreatedAt', type: 'sap.ui.model.type.Time', formatOptions: {pattern: 'HH:mm:ss'}}"
+                editable="false"
+            />
+        </form:content>
+    </form:SimpleForm>
+</core:FragmentDefinition>

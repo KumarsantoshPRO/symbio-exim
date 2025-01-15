@@ -1,0 +1,19 @@
+<mvc:View
+    controllerName="zmg.pro.exim.transactionalshippingbill.exim.controller.shippingBill_Details"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+>
+    <Page
+        id="messageHandlingPage"
+        showHeader="false"
+    >
+        <MessageView items="{message>/}">
+            <MessageItem
+                type="{message>type}"
+                title="{message>message}"
+                subtitle="{message>additionalText}"
+                description="{message>description}"
+            />
+        </MessageView>
+    </Page>
+</mvc:View>

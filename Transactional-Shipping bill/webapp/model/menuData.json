@@ -1,0 +1,93 @@
+{
+    "selectedKey": "Home",
+    "navigation": [
+      {
+        "title": "Dashboard",
+        "icon": "sap-icon://home",
+        "expanded": true,
+        "key": "Home"
+      },
+      {
+        "title": "Masters",
+        "icon": "sap-icon://decision",
+        "expanded": false,
+        "key": "Masters",
+        "items": [
+          {
+            "title": "Advance license",
+            "key": "Purchase"
+          },
+          {
+            "title": "EPCG license",
+            "key": "Production"
+          },
+          {
+            "title": "DDP license",
+            "key": "STO"
+          },
+          {
+            "title": "Duty Drawback(DBK) license",
+            "key": "Packaging"
+          },
+          {
+            "title": "SION No",
+            "key": "Non-STOProducts"
+          },
+          {
+            "title": "RodTep",
+            "key": "Non-STOProducts1"
+          },
+          {
+            "title": "ECM",
+            "key": "ECM"
+          }
+        ]
+      },
+      
+      {
+        "title": "Import",
+        "icon": "sap-icon://shipping-status",
+        "expanded": false,
+        "key": "Internal",
+        "items": [
+          {
+            "title": "Bill of Entry",
+            "key": "BintoBin"
+          },
+          {
+            "title": "Import Letter of Credit",
+            "key": "DisplayPalletInfo"
+          } 
+        ]
+      },
+
+      {
+        "title": "Export",
+        "icon": "sap-icon://travel-itinerary",
+        "expanded": false,
+        "key": "Print",
+        "items": [
+          {
+            "title": "Shipping Bill",
+            "key": "RouteView1"
+          },
+          {
+            "title": "Bill of Loading",
+            "key": "BillOfLoading"
+          },
+          {
+            "title": "Export Letter of Credit",
+            "key": "ExportLetterOfCredit"
+          }
+        ]
+      }
+       
+    ],
+    "fixedNavigation": [
+      {
+        "title": "Home",
+        "icon": "sap-icon://home"
+      }
+    ]
+  }
+  

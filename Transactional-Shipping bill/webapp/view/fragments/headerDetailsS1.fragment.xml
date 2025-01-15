@@ -1,0 +1,338 @@
+<core:FragmentDefinition
+    height="100%"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+>
+    <f:SimpleForm
+        id="IdSFHeaderDetailsSection1"
+        class="sapUiNoContentPadding"
+        layout="ColumnLayout"
+        columnsM="3"
+        columnsL="3"
+        columnsXL="3"
+        adjustLabelSpan="true"
+        editable="true"
+    >
+        <f:content>
+            <Label
+                id="IdLblShippingBillno"
+                text="Shipping Bill No"
+            />
+            <Input
+                id="ShippingBillno_Value"
+                value="{oModelForHeader>/ZshippingBillNo}"
+            />
+            <Label
+                id="IdLblInvoiceDoc"
+                text="Invoice Document"
+                required="true"
+            />
+            <Input
+                id="idZinvoiceDocument.Input"
+                showSuggestion="true"
+                showValueHelp="true"
+                valueHelpRequest="onInvoiceNumberValueHelp"
+                valueHelpOnly="true"
+                value="{oModelForHeader>/ZinvoiceDocument}"
+            />
+            <Label
+                id="IdLblSecCreateDate"
+                text="Create Date and Time"
+            />
+            <DatePicker
+                id="IdDPCreateDate"
+                value="{path:'oModelForHeader>/ZcreateDate', type: 'sap.ui.model.type.Date', formatOptions: {UTC: true}}"
+                displayFormat="dd/MM/yyyy"
+                valueFormat="dd/MM/yyyy"
+                editable="false"
+            />
+
+            <TimePicker
+                id="IdTPCreateTime"
+                value="{path:'oModelForHeader>/ZcreateTime', type: 'sap.ui.model.type.Time', formatOptions: {pattern: 'HH:mm:ss'}}"
+                editable="false"
+            />
+
+            <Label
+                id="IdLblCountryOfBL"
+                text="Country of BL"
+            />
+            <Input
+                value="{oModelForHeader>/CountryOfBl}"
+                showSuggestion="true"
+                showValueHelp="true"
+                valueHelpRequest="onCountryOfBLValueHelp"
+            />
+            <Label
+                id="IdLblPortOfLoad"
+                text="Port Of Loading"
+                required="true"
+            />
+            <Input
+                id="idPortOfLoading_Input"
+                showValueHelp="true"
+                value="{oModelForHeader>/ZportOfLoading}"
+                valueHelpRequest="onportOfLoadingValueHelp"
+            />
+
+            <Label
+                id="IdLblICDPortCode"
+                text="ICD - PORT CODE "
+                required="true"
+            />
+            <Input
+                id="idIcdPortCode_Input"
+                value="{oModelForHeader>/IcdPortCode}"
+                showValueHelp="true"
+                valueHelpRequest="onICDValueHelp"
+            />
+
+            <Label
+                id="IdLblCha"
+                text="CHA"
+            />
+
+            <Input
+                id="CountryofBLValue"
+                value="{oModelForHeader>/Zcha}"
+                showValueHelp="true"
+                valueHelpRequest="onCHAValueHelp"
+            />
+
+            <Label
+                id="IdLblShippingBillStatus"
+                text="Shipping Bill Status"
+                required="true"
+            />
+            <Select
+                id="idShippingBillStatusValue_Select"
+                forceSelection="false"
+                selectedKey="{oModelForHeader>/ZshippingBillStatus}"
+            >
+                <core:Item
+                    id="item1"
+                    key="final"
+                    text="Final"
+                />
+                <core:Item
+                    id="item2"
+                    key="provisional"
+                    text="Provisional"
+                />
+                <core:Item
+                    id="item3"
+                    key="amendment"
+                    text="Amendment"
+                />
+            </Select>
+            <Label
+                id="IdLblRCMCNo"
+                text="RCMC No"
+            />
+            <Input value="" />
+
+            <Label
+                id="IdLblShippingBillDate"
+                text=" Shipping Bill Date"
+                required="true"
+            />
+            <DatePicker
+                id="idShippingBillDate_DatePicker"
+                value="{path:'oModelForHeader>/ZshippingBillDate', type: 'sap.ui.model.type.Date', formatOptions: {UTC: true}}"
+                displayFormat="dd/MM/yyyy"
+                valueFormat="dd/MM/yyyy"
+            />
+
+            <Label
+                id="IdLblStateOfOrigin"
+                text="State of Origin"
+            />
+            <Input value="{oModelForHeader>/ZstateOfOrigin}" />
+
+            <Label
+                id="IdLblPortOfDischarge"
+                text="Port of discharge"
+                required="true"
+            />
+            <Input
+                id="idPortOfDischarge_Input"
+                value="{oModelForHeader>/PortOfDischarge}"
+            />
+
+            <Label
+                id="IdLblDestinationCountry"
+                text="Destination Country"
+            />
+            <Input
+                id="idInpDestinationCountry"
+                value="{oModelForHeader>/ZdestinationCountry}"
+                showSuggestion="true"
+                showValueHelp="true"
+                valueHelpRequest="onDestinationCountryValueHelp"
+            />
+            <Label
+                id="IdLblFCValueCurr"
+                text="FC Value Foreign Currency"
+            />
+            <Input value="{oModelForHeader>/ZforeignCurrency}" />
+
+            <Label
+                id="IdLblCust"
+                text="Customer"
+            />
+            <Input
+                id="_IDGenInput5"
+                value="{oModelForHeader>/Zcustomer}"
+                enabled="false"
+            />
+
+            <Label
+                id="IdLblLETExpoDate"
+                text="LET Export Date"
+            />
+            <DatePicker value="{oModelForHeader>/ZletExportDate}" />
+
+            <Label
+                id="IdLblScheme"
+                text="Scheme"
+            />
+            <Select
+                forceSelection="true"
+                selectedKey="{oModelForHeader>/Zschemes}"
+                id="SchemesValue"
+            >
+                <core:Item
+                    id="itemSchemes1"
+                    key="adl"
+                    text="ADL"
+                />
+                <core:Item
+                    id="itemSchemes2"
+                    key="dbr"
+                    text="DBR"
+                />
+                <core:Item
+                    id="itemSchemes3"
+                    key="air"
+                    text="AIR"
+                />
+                <core:Item
+                    id="itemSchemes4"
+                    key="no"
+                    text="No schemes"
+                />
+            </Select>
+
+            <Label
+                id="IdLblEPCG"
+                text="EPCG"
+            />
+            <Input value="{oModelForHeader>/Zepcg}" />
+
+            <Label
+                id="IdLblLOC"
+                text="Letter of Credit"
+            />
+            <Input value="{oModelForHeader>/Zloc}" />
+
+            <Label
+                id="IdLblReabate"
+                text="Reabate"
+            />
+
+            <Select
+                forceSelection="true"
+                selectedKey=""
+            >
+                <core:Item
+                    key="yes"
+                    text="Yes"
+                />
+                <core:Item
+                    key="no"
+                    text="No"
+                />
+            </Select>
+            <Label
+                id="IdLblLUTNo"
+                text="LUT No."
+            />
+            <TextArea value="" />
+
+            <!--  -->
+
+            <Label
+                id="IDLblFOBValue"
+                text="FOB Value(INR)"
+            />
+            <Input value="{oModelForHeader>/ZfobValue}" />
+            <Label
+                id="IDLblFOBValueFC"
+                text="FOB Value(FC)"
+            />
+            <Input value="{oModelForHeader>/FobValueFc}" />
+
+            <Label
+                id="IdLblExchangeRate"
+                text="Exchange Rate"
+            />
+            <Input id="IdInpExchangeRateValue" />
+            <!-- value="{oModelForHeader>/ZexchangeRate}" -->
+            <Label
+                id="IdLblRODTEP"
+                text="RODTEP"
+            />
+
+            <Select
+                forceSelection="true"
+                selectedKey="{oModelForHeader>/Zrodtep}"
+            >
+                <core:Item
+                    key="1"
+                    text="Yes"
+                />
+                <core:Item
+                    key="3"
+                    text="No"
+                />
+            </Select>
+
+            <Label
+                id="IdLblContainerNo"
+                text="Container No"
+            />
+            <Input
+                id="IdInpContainerNo"
+                value="{oModelForHeader>/ZcontainerNo}"
+                maxLength="11"
+            />
+
+            <Label
+                id="IdLblRebateAmt"
+                text="Rebate Amt"
+            />
+            <Input />
+
+            <Label
+                id="IdLblRLUTDate"
+                text="LUT Date"
+            />
+
+            <DatePicker />
+            <Label
+                id="IdLblReasonForAmendment"
+                text="Reason for Amendment"
+            />
+            <TextArea value="" />
+            <Label
+                id="IdLblSecCreatedBy"
+                text="Created By"
+            />
+            <Input
+                id="IdInpCreatedBy"
+                value="{path:'oModelForHeader>/ZcreateBy'}"
+            />
+        </f:content>
+    </f:SimpleForm>
+</core:FragmentDefinition>

@@ -1,0 +1,134 @@
+<core:FragmentDefinition
+    height="100%"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:form="sap.ui.layout.form"
+>
+    <form:SimpleForm
+        value="true"
+        class="sapUiResponsiveContentPadding"
+        layout="ColumnLayout"
+        columnsL="3"
+        columnsM="3"
+        columnsXL="3"
+    >
+        <form:content>
+            <Label text='LC No' />
+            <Text text='{oModelForHeader>/LcNo}' />
+            <Label text='Sales Contract' />
+            <Text text='{oModelForHeader>/SalesContract}' />
+            <Label text='Sales Order' />
+            <Text text='{oModelForHeader>/SalesOrder}' />
+            <Label text='Shipmet Last Date Original' />
+            <Text
+                text="{path:'oModelForHeader>/ShipmetLastDateOri', type: 'sap.ui.model.type.Date', formatOptions: {UTC: true}}"
+            />
+            <Label text='Latest Document Date Original' />
+            <Text
+                text="{path:'oModelForHeader>/LatestDocumentDateOri', type: 'sap.ui.model.type.Date', formatOptions: {UTC: true}}"
+            />
+            <Label text='Shipmet Last Date Amendment' />
+            <Text
+                text="{path:'oModelForHeader>/ShipmetLastDateAmend', type: 'sap.ui.model.type.Date', formatOptions: {UTC: true}}"
+            />
+            <Label text='Latest Document Date Amendment' />
+            <Text
+                text="{path:'oModelForHeader>/LatestDocumentDateAmend', type: 'sap.ui.model.type.Date', formatOptions: {UTC: true}}"
+            />
+            <Label text='LC Issue Date Amendment' />
+            <Text
+                text="{path:'oModelForHeader>/LcIssueDateAmend', type: 'sap.ui.model.type.Date', formatOptions: {UTC: true}}"
+            />
+            <Label text='LC Issuance Bank Account Number' />
+            <Text text='{oModelForHeader>/LcIssuanceBankAccountNumbe}' />
+            <Label text='LC Issuance Bank Name' />
+            <Text text='{oModelForHeader>/LcIssuanceBankName}' />
+            <Label text='LC Issuance Swift Code' />
+            <Text text='{oModelForHeader>/LcIssuanceSwiftCode}' />
+            <Label text='Beneficiary Bank Details With Swift Code' />
+            <Text text='{oModelForHeader>/BeneficiaryBankDetailsWith_}' />
+            <Label text='Negotiating Bank Details With Swift Code' />
+            <Text text='{oModelForHeader>/NegotiatingBankDetailsWith_}' />
+            <Label text='Port Of Loading' />
+            <Text text='{oModelForHeader>/PortOfLoading}' />
+            <Label text='Final Destination' />
+            <Text text='{oModelForHeader>/FinalDestination}' />
+            <Label text='Issue Charges By Seller' />
+            <Text text='{oModelForHeader>/IssueChargesBySeller}' />
+            <Label text='Confirmation Charges By Seller' />
+            <Text text='{oModelForHeader>/ConfirmationChargesBySeller}' />
+            <Label text='Discounting Charges By Seller' />
+            <Text text='{oModelForHeader>/DiscountingChargesBySeller}' />
+            <Label text='Issue Charges By Buyer' />
+            <Text text='{oModelForHeader>/IssueChargesByBuyer}' />
+            <Label text='Confirmation Charges By Buyer' />
+            <Text text='{oModelForHeader>/ConfirmationChargesByBuyer}' />
+            <Label text='Discounting Charges By Buyer' />
+            <Text text='{oModelForHeader>/DiscountingChargesByBuyer}' />
+            <Label text='Payment Terms' />
+            <Text text='{oModelForHeader>/PaymentTerms}' />
+            <Label text='Tolerance Qty %' />
+            <Text text='{oModelForHeader>/ToleranceQtyP}' />
+            <Label text='Shipment Type' />
+            <Text text='{oModelForHeader>/ShipmentType}' />
+            <Label text='LC Type' />
+            <Text text='{oModelForHeader>/LcType}' />
+            <Label text='PI' />
+            <Text text='{oModelForHeader>/Pi}' />
+            <Label text='LC Expiry Date Original' />
+            <Text
+                text="{path:'oModelForHeader>/LcExpiryDateOriginal', type: 'sap.ui.model.type.Date', formatOptions: {UTC: true}}"
+            />
+            <Label text='LC Issue Date Original' />
+            <Text
+                text="{path:'oModelForHeader>/LcIssueDateOriginal', type: 'sap.ui.model.type.Date', formatOptions: {UTC: true}}"
+            />
+            <Label text='LC Receving Date Original' />
+            <Text
+                text="{path:'oModelForHeader>/LcRecevingDateOriginal', type: 'sap.ui.model.type.Date', formatOptions: {UTC: true}}"
+            />
+            <Label text='LC Expiry Date Amendment' />
+            <Text
+                text="{path:'oModelForHeader>/LcExpiryDateAmendment', type: 'sap.ui.model.type.Date', formatOptions: {UTC: true}}"
+            />
+            <Label text='LC Receving Date Amendment' />
+            <Text
+                text="{path:'oModelForHeader>/LcRecevingDateAmendment', type: 'sap.ui.model.type.Date', formatOptions: {UTC: true}}"
+            />
+            <Label text='LC Recieiving Bank Account Number' />
+            <Text text='{oModelForHeader>/LcRecieivingBankAccountNum}' />
+            <Label text='LC Receiving Bank Name' />
+            <Text text='{oModelForHeader>/LcReceivingBankName}' />
+            <Label text='LC Receving Swift Code' />
+            <Text text='{oModelForHeader>/LcRecevingSwiftCode}' />
+            <Label text='Confirmation Bank Details With Swift Code' />
+            <Text text='{oModelForHeader>/ConfirmationBankDetailsWith}' />
+            <Label text='Port Of Discharge' />
+            <Text text='{oModelForHeader>/PortOfDischarge}' />
+            <Label text='LC Currency' />
+            <Text text='{oModelForHeader>/LcCurrency}' />
+            <Label text='LC Value' />
+            <Text text='{oModelForHeader>/LcValue}' />
+            <Label text='List Of Documents Under LC' />
+            <Text text='{oModelForHeader>/ListOfDocumentsUnderLc}' />
+            <Label text='Amendment Charges By Seller' />
+            <Text text='{oModelForHeader>/AmendmentChargesBySeller}' />
+            <Label text='Discrepency Charges By Seller' />
+            <Text text='{oModelForHeader>/DiscrepencyChargesBySeller}' />
+            <Label text='Total Charges By Seller' />
+            <Text text='{oModelForHeader>/TotalChargesBySeller}' />
+            <Label text='Amendment Charges By Seller' />
+            <Text text='{oModelForHeader>/Amendment_ChargesBySeller}' />
+            <Label text='Discrepency Charges By Buyer' />
+            <Text text='{oModelForHeader>/DiscrepencyChargesByBuyer}' />
+            <Label text='Total Charges By Buyer' />
+            <Text text='{oModelForHeader>/TotalChargesByBuyer}' />
+            <Label text='LC Charges In India' />
+            <Text text='{oModelForHeader>/LcChargesInIndia}' />
+            <Label text='Tolerance Value %' />
+            <Text text='{oModelForHeader>/ToleranceValueP}' />
+            <Label text='Trans Shipment' />
+            <Text text='{oModelForHeader>/TransShipment}' />
+        </form:content>
+    </form:SimpleForm>
+</core:FragmentDefinition>

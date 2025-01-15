@@ -1,0 +1,144 @@
+<core:FragmentDefinition
+    height="100%"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+>
+    <Dialog
+        id="__IDLicenses"
+        title="Licenses Details"
+        resizable="true"
+        draggable="true"
+        icon="sap-icon://provision"
+        titleAlignment="Center"
+    >
+        <customHeader>
+            <Bar>
+                <contentMiddle>
+                    <core:Icon src="sap-icon://copy" />
+                    <Title text="Licenses Details" />
+                </contentMiddle>
+
+                <contentRight>
+                    <Button
+                        icon="sap-icon://decline"
+                        press="onLicenseDialogClose"
+                         
+                    />
+                </contentRight>
+            </Bar>
+        </customHeader>
+
+        <ScrollContainer
+            id="__IDGenScrollContainerLicensesDetails"
+            width="100%"
+            height="auto"
+            horizontal="true"
+        >
+            <Table
+                id="_idTblForItemsLicensesDetail"
+                items="{oModelForLicenses>/results}"
+                class=""
+            >
+                <headerToolbar>
+                    <Toolbar>
+                        <Title text="Licenses Details" />
+                        <ToolbarSpacer />
+                        <Button
+                            icon="sap-icon://add"
+                            press="onAddNewEmptyLicense"
+                            visible="false"
+                        />
+                    </Toolbar>
+                </headerToolbar>
+                <columns>
+                    <Column
+                        hAlign="Center"
+                        width="10rem"
+                    >
+                        <Text text="Item Number" />
+                    </Column>
+                    <Column
+                        hAlign="Center"
+                        width="10rem"
+                    >
+                        <Text text="Material Number" />
+                    </Column>
+                    <Column
+                        hAlign="Center"
+                        width="10rem"
+                        minScreenWidth="Tablet"
+                        demandPopin="true"
+                    >
+                        <Text text="Licences" />
+                    </Column>
+
+                    <Column
+                        hAlign="Center"
+                        width="10rem"
+                        minScreenWidth="Tablet"
+                        demandPopin="true"
+                    >
+                        <Text text="Licence type" />
+                    </Column>
+                    <Column
+                        hAlign="Center"
+                        width="10rem"
+                        minScreenWidth="Tablet"
+                        demandPopin="true"
+                    >
+                        <Text text="Quantity" />
+                    </Column>
+                    <Column
+                        hAlign="Center"
+                        width="10rem"
+                        minScreenWidth="Tablet"
+                        demandPopin="true"
+                    >
+                        <Text text="Value" />
+                    </Column>
+                    <Column
+                        hAlign="Center"
+                        width="10rem"
+                        minScreenWidth="Tablet"
+                        demandPopin="true"
+                    >
+                        <Text text="Import Item Name" />
+                    </Column>
+                    <Column
+                        hAlign="Center"
+                        width="10rem"
+                        minScreenWidth="Tablet"
+                        demandPopin="true"
+                    >
+                        <Text text="Import Qty as per Licence" />
+                    </Column>
+                </columns>
+
+                <items>
+                    <ColumnListItem vAlign="Middle">
+                        <cells>
+                            <Text text="{oModelForLicenses>Item}" />
+                            <Text text="{oModelForLicenses>Material}" />
+                            <Text text="{oModelForLicenses>Licences}" />
+                            <Text />
+                            <Text text="{oModelForLicenses>Quantity}" />
+                            <Text text="{oModelForLicenses>Value}" />
+                            <Text />
+                            <Text />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </ScrollContainer>
+
+        <endButton>
+            <Button
+                id="__IDLicGenButton2"
+                text="Save"
+                press="onLicenseDialogClose"
+                visible="false"
+            />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

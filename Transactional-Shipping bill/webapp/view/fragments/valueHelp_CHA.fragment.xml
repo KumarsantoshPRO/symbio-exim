@@ -1,0 +1,23 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <SelectDialog
+        id="idSDCHAF4"
+        title="Country Of BL"
+        noDataText="No Data"
+        search="onValueHelpSearch_CHA"
+        liveChange="onValueHelpSearch_CHA"
+        confirm="onValueHelpConfirm_CHA"
+        contentWidth="250px" 
+    >
+        <items>
+            <StandardListItem
+                id="idSLCHAValueHelp"
+                title="{Supplier}-{SupplierName}"
+                wrapping="true"
+                
+            />
+        </items>
+    </SelectDialog>
+</core:FragmentDefinition>

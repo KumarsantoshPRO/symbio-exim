@@ -1,0 +1,233 @@
+{
+    "_version": "1.59.0",
+    "sap.app": {
+        "id": "zmg.pro.exim.transactionalshippingbill.exim",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:basic",
+            "version": "1.14.2",
+            "toolsId": "afe428d0-a590-4743-8f14-e7276f908a71"
+        },
+        "dataSources": {
+            "menuData_alias": {
+                "uri": "model/menuData.json",
+                "type": "JSON"
+            },
+            "ZRC_SHIP_BILL_HEAD_SRV_B_Annotation": {
+                "uri": "/destinations/S4_SAML/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZRC_SHIP_BILL_HEAD_SRV_B_VAN',Version='0001')/$value/",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "localService/ZRC_SHIP_BILL_HEAD_SRV_B/ZRC_SHIP_BILL_HEAD_SRV_B_Annotation.xml"
+                }
+            },
+            "ZRC_SHIP_BILL_HEAD_SRV_B": {
+                "uri": "/sap/opu/odata/sap/ZRC_SHIP_BILL_HEAD_SRV_B",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "ZRC_SHIP_BILL_HEAD_SRV_B_Annotation"
+                    ],
+                    "localUri": "localService/ZRC_SHIP_BILL_HEAD_SRV_B/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "ZV_BILLING_INV_DET_SERV_B_Annotation": {
+                "uri": "/destinations/S4_SAML/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZV_BILLING_INV_DET_SERV_B_VAN',Version='0001')/$value/",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "localService/ZV_BILLING_INV_DET_SERV_B/ZV_BILLING_INV_DET_SERV_B_Annotation.xml"
+                }
+            },
+            "ZV_BILLING_INV_DET_SERV_B": {
+                "uri": "/sap/opu/odata/sap/ZV_BILLING_INV_DET_SERV_B",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "ZV_BILLING_INV_DET_SERV_B_Annotation"
+                    ],
+                    "localUri": "localService/ZV_BILLING_INV_DET_SERV_B/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.126.2",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.f": {},
+                "sap.suite.ui.generic.template": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.ui.table": {},
+                "sap.ushell": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "zmg.pro.exim.transactionalshippingbill.exim.i18n.i18n"
+                }
+            },
+            "menuModel": {
+                "type": "sap.ui.model.json.JSONModel",
+                "dataSource": "menuData_alias"
+            },
+            "": {
+                "preload": true,
+                "dataSource": "ZRC_SHIP_BILL_HEAD_SRV_B",
+                "settings": {
+                    "useBatch": false,
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "ZV_BILLING_INV_DET_SERV_B": {
+                "dataSource": "ZV_BILLING_INV_DET_SERV_B",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "zmg.pro.exim.transactionalshippingbill.exim.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "Home",
+                    "pattern": "Home",
+                    "target": [
+                        "Home"
+                    ]
+                },
+                {
+                    "name": "PageUnderDevelopment",
+                    "pattern": "PageUnderDevelopment",
+                    "target": [
+                        "PageUnderDevelopment"
+                    ]
+                },
+                {
+                    "name": "RouteView1",
+                    "pattern": ":?query:",
+                    "target": [
+                        "TargetView1"
+                    ]
+                },
+                {
+                    "name": "shippingBill_Details",
+                    "pattern": "shippingBill_Details/{billNo}",
+                    "target": [
+                        "shippingBill_Details"
+                    ]
+                },
+                {
+                    "name": "messageView",
+                    "pattern": "messageView",
+                    "target": [
+                        "messageView"
+                    ]
+                }
+            ],
+            "targets": {
+                "Home": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "Home",
+                    "viewName": "Home",
+                    "viewPath": "zmg.pro.exim.transactionalshippingbill.exim.view.Home"
+                },
+                "PageUnderDevelopment": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "PageUnderDevelopment",
+                    "viewName": "PageUnderDevelopment",
+                    "viewPath": "zmg.pro.exim.transactionalshippingbill.exim.view.PageUnderDevelopment"
+                },
+                "messageView": {
+                    "viewType": "XML",
+                    "transition": "flip",
+                    "clearControlAggregation": false,
+                    "viewId": "messageView",
+                    "viewName": "messageView",
+                    "viewPath": "zmg.pro.exim.transactionalshippingbill.exim.view.messageView"
+                },
+                "TargetView1": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "View1",
+                    "viewName": "View1"
+                },
+                "shippingBill_Details": {
+                    "viewType": "XML",
+                    "viewId": "shippingBill_Details",
+                    "viewName": "shippingBill_Details"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "zmg.pro.exim.transactionalshippingbill.exim.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "App"
+        }
+    }
+}

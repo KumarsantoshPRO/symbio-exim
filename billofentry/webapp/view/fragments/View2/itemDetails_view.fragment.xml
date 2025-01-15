@@ -1,0 +1,183 @@
+<core:FragmentDefinition
+    height="100%"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:table="sap.ui.table"
+    xmlns:sap.ui.fl="sap.ui.fl"
+>
+    <table:Table
+        id="ImportTableView"
+        sort="onSort"
+        columnResize="onColumnResize"
+        columnMove="onColumnMove"
+        rowMode="Auto"
+        ariaLabelledBy="title"
+        sap.ui.fl:flexibility="sap/m/flexibility/EngineFlex"
+        selectionMode="None"
+        selectionBehavior="Row"
+        rows="{oModelForItemTable>/results/}"
+        showColumnVisibilityMenu="true"
+        enableColumnFreeze="false"
+        enableCellFilter="true"
+        columnSelect="onColumnSelect"
+        cellContextmenu="onProductIdCellContextMenu"
+        enableGrouping="true"
+        rowSelectionChange="onShowLCDetails"
+    >
+        <table:extension>
+            <OverflowToolbar style="Clear">
+                <Title text="{myPropertyValues>/title}" />
+                <ToolbarSpacer />
+                <Button
+                    text="Create"
+                    press="onAddNewLOCItem"
+                    type="Transparent"
+                    tooltip="Create new"
+                    visible="false"
+                />
+                <Button
+                    id="idDeleteRow"
+                    text="Delete"
+                    press="onDeleteRow"
+                    type="Transparent"
+                    enabled="false"
+                    visible="false"
+                />
+                <Button
+                    icon="sap-icon://action-settings"
+                    press="openPersoDialog"
+                    visible="false"
+                />
+                <VBox visible="false">
+                    <SegmentedButton selectedKey="less">
+                        <items>
+                            <SegmentedButtonItem
+                                icon="sap-icon://detail-less"
+                                key="less"
+                            />
+                            <SegmentedButtonItem
+                                icon="sap-icon://detail-more"
+                            />
+                        </items>
+                    </SegmentedButton>
+                </VBox>
+                <Button
+                    icon="sap-icon://excel-attachment"
+                    press="onExport"
+                    visible="false"
+                />
+            </OverflowToolbar>
+        </table:extension>
+
+        <table:noData>
+            <IllustratedMessage enableVerticalResponsiveness="true" />
+        </table:noData>
+
+           <table:columns>
+            <table:Column
+                id="BillEntry"
+                sortProperty="BillEntry"
+            >
+                <Label
+                    wrapping="true"
+                    text=" Bill of Entry"
+                />
+                <table:template>
+                    <Text text="{oModelForItemTable>BillEntry}" />
+                </table:template>
+            </table:Column>
+
+            <table:Column
+                id="PoNo"
+                sortProperty="PoNo"
+            >
+                <Label
+                    wrapping="true"
+                    text="Purchase Order No."
+                />
+                <table:template>
+                    <Text text="{oModelForItemTable>PoNo}" />
+                </table:template>
+            </table:Column>
+
+            <table:Column
+                id="PoLineItem"
+                sortProperty="PoLineItem"
+            >
+                <Label
+                    wrapping="true"
+                    text="PO Item No"
+                />
+                <!-- editable="{myPropertyValues>/new}" -->
+                <table:template>
+                    <Text text="{oModelForItemTable>PoLineItem}" />
+                </table:template>
+            </table:Column>
+
+            <table:Column
+                id="MaterialCode"
+                sortProperty="MaterialCode"
+            >
+                <Label
+                    wrapping="true"
+                    text="Material Code"
+                />
+                <table:template>
+                    <Text text="{oModelForItemTable>MaterialCode}" />
+                </table:template>
+            </table:Column>
+
+            <table:Column
+                id="MaterialDescription"
+                sortProperty="MaterialDescription"
+            >
+                <Label
+                    wrapping="true"
+                    text="Material Description"
+                />
+                <table:template>
+                    <Text text="{oModelForItemTable>MaterialDescription}" />
+                </table:template>
+            </table:Column>
+
+            <table:Column
+                id="UnitField"
+                sortProperty="UnitField"
+            >
+                <Label
+                    wrapping="true"
+                    text="UoM"
+                />
+                <table:template>
+                    <Text text="{oModelForItemTable>UnitField}" />
+                </table:template>
+            </table:Column>
+
+            <table:Column
+                id="PoQuantity"
+                sortProperty="PoQuantity"
+            >
+                <Label
+                    wrapping="true"
+                    text="PO Quantity"
+                />
+                <table:template>
+                    <Text text="{oModelForItemTable>PoQuantity}" />
+                </table:template>
+            </table:Column>
+
+            <table:Column
+                id="UnitRate"
+                sortProperty="UnitRate"
+            >
+                <Label
+                    wrapping="true"
+                    text="Unit Rate"
+                />
+                <table:template>
+                    <Text text="{oModelForItemTable>UnitRate}" />
+                </table:template>
+            </table:Column>
+        </table:columns>
+    </table:Table>
+</core:FragmentDefinition>

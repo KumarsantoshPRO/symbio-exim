@@ -1,0 +1,341 @@
+<mvc:View
+    controllerName="zpro.sk.mittalcoin.exim.bill.of.entry.billofentry.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    height="100%"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:table="sap.ui.table"
+    xmlns:columnmenu="sap.m.table.columnmenu"
+    xmlns:sap.ui.fl="sap.ui.fl"
+>
+    <f:DynamicPage fitContent="true">
+        <f:header>
+            <f:DynamicPageHeader>
+                <f:content>
+                    <fb:FilterBar
+                        id="filterbar"
+                        persistencyKey="myPersKey"
+                        useToolbar="false"
+                        search="onSearch"
+                    >
+                        <fb:filterGroupItems>
+                            <fb:FilterGroupItem
+                                name="Name"
+                                label="Bill of Entry"
+                                groupName="Group1"
+                                visibleInFilterBar="true"
+                            >
+                                <fb:control>
+                                    <Input
+                                        value="{oModelForFilters>/BillEntry}"
+                                        placeholder="Bill of Entry"
+                                        showValueHelp="true"
+                                        valueHelpRequest="onAdvanceLicenseValuelHelp"
+                                    />
+                                </fb:control>
+                            </fb:FilterGroupItem>
+
+                            <fb:FilterGroupItem
+                                name="Name1"
+                                label="Purchase Order No."
+                                groupName="Group1"
+                                visibleInFilterBar="true"
+                            >
+                                <fb:control>
+                                    <Input
+                                        value="{oModelForFilters>/PoNoCode}"
+                                        placeholder="Purchase Order No."
+                                        showValueHelp="true"
+                                        valueHelpRequest="onPoNoCodeValuelHelp"
+                                    />
+                                </fb:control>
+                            </fb:FilterGroupItem>
+
+                            <fb:FilterGroupItem
+                                name="Name2"
+                                label="Supplier Invoice No."
+                                groupName="Group1"
+                                visibleInFilterBar="true"
+                            >
+                                <fb:control>
+                                    <Input
+                                        value="{oModelForFilters>/SupplierInvoiceNo}"
+                                        placeholder="Supplier Invoice No."
+                                        showValueHelp="true"
+                                        valueHelpRequest="onSupplierInvoiceNoValuelHelp"
+                                    />
+                                </fb:control>
+                            </fb:FilterGroupItem>
+
+                            <fb:FilterGroupItem
+                                name="Name3"
+                                label="Supplier Code"
+                                groupName="Group1"
+                                visibleInFilterBar="true"
+                            >
+                                <fb:control>
+                                    <Input
+                                        value=""
+                                        placeholder="Supplier Code"
+                                        showValueHelp="true"
+                                        valueHelpRequest="onSupplierCodeValuelHelp"
+                                    />
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                        </fb:filterGroupItems>
+                    </fb:FilterBar>
+                </f:content>
+            </f:DynamicPageHeader>
+        </f:header>
+
+        <f:content>
+            <table:Table
+                id="table"
+                sort="onSort"
+                columnResize="onColumnResize"
+                columnMove="onColumnMove"
+                rowMode="Auto"
+                ariaLabelledBy="title"
+                sap.ui.fl:flexibility="sap/m/flexibility/EngineFlex"
+                selectionMode="Single"
+                selectionBehavior="Row"
+                rows="{oModelForTable>/}"
+                showColumnVisibilityMenu="true"
+                enableColumnFreeze="false"
+                enableCellFilter="true"
+                columnSelect="onColumnSelect"
+                cellContextmenu="onProductIdCellContextMenu"
+                enableGrouping="true"
+                rowSelectionChange="onShowLCDetails"
+                rowActionCount="2"
+            >
+                <table:extension>
+                    <OverflowToolbar style="Clear">
+                        <Title id="title" />
+                        <ToolbarSpacer />
+                        <Button
+                            text="Create"
+                            press="onAddNewLOC"
+                            type="Transparent"
+                            tooltip="Create new"
+                        />
+                        <Button
+                            id="idDeleteRow"
+                            text="Delete"
+                            press="onDeleteRow"
+                            type="Transparent"
+                            enabled="false"
+                            visible="false"
+                        />
+                        <Button
+                            icon="sap-icon://action-settings"
+                            press="openPersoDialog"
+                        />
+                        <VBox visible="false">
+                            <SegmentedButton selectedKey="less">
+                                <items>
+                                    <SegmentedButtonItem
+                                        icon="sap-icon://detail-less"
+                                        key="less"
+                                    />
+                                    <SegmentedButtonItem
+                                        icon="sap-icon://detail-more"
+                                    />
+                                </items>
+                            </SegmentedButton>
+                        </VBox>
+                        <Button
+                            icon="sap-icon://excel-attachment"
+                            press="onExport"
+                        />
+                    </OverflowToolbar>
+                </table:extension>
+
+                <table:dependents>
+                    <columnmenu:Menu id="menu">
+                        <columnmenu:items>
+                            <columnmenu:ActionItem
+                                icon="sap-icon://sort"
+                                label="Sort"
+                                press="onColumnHeaderItemPress"
+                            />
+                            <columnmenu:ActionItem
+                                icon="sap-icon://filter"
+                                label="Filter"
+                                press="onColumnHeaderItemPress"
+                            />
+                            <columnmenu:ActionItem
+                                icon="sap-icon://group-2"
+                                label="Groups"
+                                press="onColumnHeaderItemPress"
+                            />
+
+                            <columnmenu:ActionItem
+                                icon="sap-icon://table-column"
+                                label="Columns"
+                                press="onColumnHeaderItemPress"
+                            />
+                        </columnmenu:items>
+                    </columnmenu:Menu>
+                </table:dependents>
+
+                <table:noData>
+                    <IllustratedMessage enableVerticalResponsiveness="true" />
+                </table:noData>
+
+                <table:columns>
+                    <table:Column
+                        id="BillEntry"
+                        sortProperty="BillEntry"
+                        headerMenu="menu"
+                    >
+                        <Label
+                            wrapping="true"
+                            text="Bill of Entry"
+                        />
+                        <table:template>
+                            <Label text="{oModelForTable>BillEntry}" />
+                        </table:template>
+                    </table:Column>
+
+                    <table:Column
+                        id="PoNo"
+                        sortProperty="PoNo"
+                        headerMenu="menu"
+                    >
+                        <Label
+                            wrapping="true"
+                            text="Purchase Order No."
+                        />
+                        <table:template>
+                            <Label
+                                wrapping="true"
+                                text="{oModelForTable>PoNo}"
+                            />
+                        </table:template>
+                    </table:Column>
+
+                    <table:Column
+                        id="SupplierInvoiceNo"
+                        sortProperty="SupplierInvoiceNo"
+                        headerMenu="menu"
+                    >
+                        <Label
+                            wrapping="true"
+                            text="Supplier Invoice No."
+                        />
+                        <table:template>
+                            <Label
+                                wrapping="true"
+                                text="{oModelForTable>SupplierInvoiceNo}"
+                            />
+                        </table:template>
+                    </table:Column>
+
+                    <table:Column
+                        id="SupplierCode"
+                        sortProperty="SupplierCode"
+                        headerMenu="menu"
+                    >
+                        <Label
+                            wrapping="true"
+                            text="Supplier Code"
+                        />
+                        <table:template>
+                            <Label
+                                wrapping="true"
+                                text="{path:'oModelForTable>SupplierCode'}"
+                            />
+                        </table:template>
+                    </table:Column>
+
+                    <table:Column
+                        id="SupplierName"
+                        sortProperty="SupplierName"
+                        headerMenu="menu"
+                    >
+                        <Label
+                            wrapping="true"
+                            text="Supplier Name"
+                        />
+                        <table:template>
+                            <Label
+                                wrapping="true"
+                                text="{path:'oModelForTable>SupplierName'}"
+                            />
+                        </table:template>
+                    </table:Column>
+
+                    <table:Column
+                        id="BlNo"
+                        sortProperty="BlNo"
+                        headerMenu="menu"
+                    >
+                        <Label
+                            wrapping="true"
+                            text="BL No"
+                        />
+                        <table:template>
+                            <Label
+                                wrapping="true"
+                                text="{path:'oModelForTable>BlNo'}"
+                            />
+                        </table:template>
+                    </table:Column>
+
+                    <table:Column
+                        id="ShippingLine"
+                        sortProperty="ShippingLine"
+                        headerMenu="menu"
+                    >
+                        <Label
+                            wrapping="true"
+                            text="Shipping Line"
+                        />
+                        <table:template>
+                            <Label
+                                wrapping="true"
+                                text="{path:'oModelForTable>ShippingLine'}"
+                            />
+                        </table:template>
+                    </table:Column>
+
+                    <table:Column
+                        id="Icd"
+                        sortProperty="Icd"
+                        headerMenu="menu"
+                    >
+                        <Label
+                            wrapping="true"
+                            text="ICD"
+                        />
+                        <table:template>
+                            <Label
+                                wrapping="true"
+                                text="{path:'oModelForTable>Icd'}"
+                            />
+                        </table:template>
+                    </table:Column>
+                </table:columns>
+
+                <table:rowActionTemplate>
+                    <table:RowAction>
+                        <table:items>
+                            <table:RowActionItem
+                                type="Navigation"
+                                press="onShowLCDetails"
+                            />
+                            <table:RowActionItem
+                                type="Delete"
+                                press="onDeletePress"
+                                icon="sap-icon://delete"
+                            />
+                        </table:items>
+                    </table:RowAction>
+                </table:rowActionTemplate>
+            </table:Table>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

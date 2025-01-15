@@ -1,0 +1,24 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <SelectDialog
+        id="idSDShippingBillF4"
+        title="Shipping Bill Number"
+        noDataText="No Data"
+        search="onValueHelpSearch_shippingBillNumber"
+        liveChange="onValueHelpSearch_shippingBillNumber"
+        confirm="onValueHelpConfirm_shippingBillNumber"
+        contentWidth="250px" 
+    >
+        <items>
+            <StandardListItem
+                id="idSLShippingBillValueHelp"
+                title="{ZshippingBillNo}"
+               
+                wrapping="true"
+                
+            />
+        </items>
+    </SelectDialog>
+</core:FragmentDefinition>

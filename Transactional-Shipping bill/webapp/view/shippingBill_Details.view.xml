@@ -1,0 +1,152 @@
+<mvc:View
+    controllerName="zmg.pro.exim.transactionalshippingbill.exim.controller.shippingBill_Details"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:uxap="sap.uxap"
+>
+    <uxap:ObjectPageLayout
+        id="ObjectPageLayout"
+        upperCaseAnchorBar="false"
+        enableLazyLoading="true"
+        showFooter="true"
+    >
+        <uxap:headerTitle>
+            <uxap:ObjectPageHeader id="_IDGenObjectPageHeader1">
+                <uxap:actions>
+                    <Button
+                        id="idBtnEdit"
+                        icon="sap-icon://edit"
+                        text="Edit"
+                        press="onEditPress"
+                        tooltip="Edit"
+                    />
+                </uxap:actions>
+            </uxap:ObjectPageHeader>
+        </uxap:headerTitle>
+
+        <uxap:sections>
+
+            <uxap:ObjectPageSection
+                id="IdObjSecHeaderDetailsSection1"
+                title="Shipping Bill - General Details"
+                titleUppercase="false"
+            >
+                <uxap:ObjectPageSubSection
+                    id="IdOPSHeaderDetailsSubSection1"
+                    title="Header Details"
+                    titleUppercase="false"
+                    visible="true"
+                >
+                    <core:Fragment
+                        id="idFrg_headerDetialsS1View"
+                        fragmentName="zmg.pro.exim.transactionalshippingbill.exim.view.fragments.headerDetailsS1View"
+                        type="XML"
+                    />
+                </uxap:ObjectPageSubSection>
+                <uxap:ObjectPageSubSection
+                    id="IdOPSHeaderDetailsSubSection1Edit"
+                    title="Header Details"
+                    titleUppercase="false"
+                    visible="false"
+                >
+                    <core:Fragment
+                        id="idFrg_headerDetialsS1Edit"
+                        fragmentName="zmg.pro.exim.transactionalshippingbill.exim.view.fragments.headerDetailsS1"
+                        type="XML"
+                    />
+                </uxap:ObjectPageSubSection>
+            </uxap:ObjectPageSection>
+
+            <uxap:ObjectPageSection
+                id="IdObjSecHeaderDetailsSection2"
+                title="Shipping Bill - License Details"
+                titleUppercase="false"
+                visible="false"
+            >
+                <uxap:ObjectPageSubSection
+                    id="IdOPSHeaderDetailsSubSection2View"
+                    title="License Details"
+                    visible="true"
+                >
+                    <core:Fragment
+                        id="idFrg_headerDetialsS2View"
+                        fragmentName="zmg.pro.exim.transactionalshippingbill.exim.view.fragments.headerDetailsS2View"
+                        type="XML"
+                    />
+                </uxap:ObjectPageSubSection>
+                <uxap:ObjectPageSubSection
+                    id="IdOPSHeaderDetailsSubSection2Edit"
+                    title="License Details"
+                    visible="false"
+                >
+                    <core:Fragment
+                        id="idFrg_headerDetialsS2Edit"
+                        fragmentName="zmg.pro.exim.transactionalshippingbill.exim.view.fragments.headerDetailsS2"
+                        type="XML"
+                    />
+                </uxap:ObjectPageSubSection>
+            </uxap:ObjectPageSection>
+
+            <uxap:ObjectPageSection
+                id="IdOPSAssignmentDetailsSection"
+                title="Item Details "
+                titleUppercase="false"
+            >
+                <uxap:ObjectPageSubSection
+                    id="AssignmentDetailsSubSection"
+                    title="Item Details "
+                    titleUppercase="false"
+                >
+                    <core:Fragment
+                        id="idFrg_itemDetials"
+                        fragmentName="zmg.pro.exim.transactionalshippingbill.exim.view.fragments.itemDetails"
+                        type="XML"
+                    />
+                </uxap:ObjectPageSubSection>
+                <uxap:ObjectPageSubSection
+                    id="AssignmentDetailsSubSectionView"
+                    title="Item Details "
+                    titleUppercase="false"
+                >
+                    <core:Fragment
+                        id="idFrg_itemDetialsView"
+                        fragmentName="zmg.pro.exim.transactionalshippingbill.exim.view.fragments.itemDetailsView"
+                        type="XML"
+                    />
+                </uxap:ObjectPageSubSection>
+            </uxap:ObjectPageSection>
+
+        </uxap:sections>
+        
+        <uxap:footer>
+            <Bar id="idV2Bar">
+                <contentRight>
+                    <Button
+                        id="idBtn_SaveLCDetails"
+                        text="Create"
+                        type="Accept"
+                        press="onSave"
+                        visible="{oEditableModel>/save}"
+                        ariaHasPopup="Dialog"
+                    />
+                    <Button
+                        id="idBtn_UpdateLCDetails"
+                        text="Update"
+                        type="Accept"
+                        press="onUpdate"
+                        visible="{oEditableModel>/update}"
+                        ariaHasPopup="Dialog"
+                    />
+                    <Button
+                        id="idBtn_Cancel"
+                        text="Cancel"
+                        type="Reject"
+                        press="onCancel"
+                    />
+                </contentRight>
+            </Bar>
+        </uxap:footer>
+    </uxap:ObjectPageLayout>
+</mvc:View>

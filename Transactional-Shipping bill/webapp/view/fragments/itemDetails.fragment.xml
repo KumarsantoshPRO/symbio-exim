@@ -1,0 +1,287 @@
+<core:FragmentDefinition
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    height="100%"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:svm="sap.ui.comp.smartvariants"
+    xmlns:l="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:table="sap.ui.table"
+    xmlns:columnmenu="sap.m.table.columnmenu"
+    xmlns:sap.ui.fl="sap.ui.fl"
+    xmlns:sap.ui.dt="sap.ui.dt"
+    xmlns:vm="sap.ui.fl.variants"
+>
+    <ScrollContainer
+        id="__IDGenScrollContainerItemDetails"
+        width="100%"
+        height="auto"
+        horizontal="true"
+    >
+        <table:Table
+            id="_idTblForItemsDetail"
+            sort="onSort"
+            columnResize="onColumnResize"
+            columnMove="onColumnMove"
+            rowMode="Auto"
+            ariaLabelledBy="title"
+            sap.ui.fl:flexibility="sap/m/flexibility/EngineFlex"
+            selectionMode="None"
+            rows="{oModelForItems>/results}"
+            showColumnVisibilityMenu="true"
+            enableColumnFreeze="false"
+            enableCellFilter="true"
+            columnSelect="onColumnSelect"
+            cellContextmenu="onProductIdCellContextMenu"
+            enableGrouping="true"
+            rowSelectionChange="onShowDetails"
+            rowActionCount="1"
+            visible="{oEditableModel>/itemTableVisiblity}"
+        >
+            <table:extension>
+                <OverflowToolbar style="Clear">
+                    <Title id="_title" />
+                    <ToolbarSpacer />
+                    <Button
+                        id="idBtnCreateItem"
+                        icon="sap-icon://add"
+                        press="onAddNewEmptyItem"
+                        type="Transparent"
+                        tooltip="Add new Item"
+                        visible="false"
+                    />
+                    <Button
+                        id="_idDeleteRow"
+                        text="Delete"
+                        press="onDeleteRow"
+                        type="Transparent"
+                        enabled="false"
+                        visible="false"
+                    />
+                    <Button
+                        icon="sap-icon://action-settings"
+                        press="openPersoDialog"
+                        visible="false"
+                    />
+                    <VBox visible="false">
+                        <SegmentedButton selectedKey="less">
+                            <items>
+                                <SegmentedButtonItem
+                                    icon="sap-icon://detail-less"
+                                    key="less"
+                                />
+                                <SegmentedButtonItem
+                                    icon="sap-icon://detail-more"
+                                />
+                            </items>
+                        </SegmentedButton>
+                    </VBox>
+                    <Button
+                        icon="sap-icon://excel-attachment"
+                        press="onExport"
+                        visible="false"
+                    />
+                </OverflowToolbar>
+            </table:extension>
+
+            <table:dependents>
+                <columnmenu:Menu id="_menu">
+                    <columnmenu:items>
+                        <columnmenu:ActionItem
+                            icon="sap-icon://sort"
+                            label="Sort"
+                            press="onColumnHeaderItemPress"
+                        />
+                        <columnmenu:ActionItem
+                            icon="sap-icon://filter"
+                            label="Filter"
+                            press="onColumnHeaderItemPress"
+                        />
+                        <columnmenu:ActionItem
+                            icon="sap-icon://group-2"
+                            label="Groups"
+                            press="onColumnHeaderItemPress"
+                        />
+
+                        <columnmenu:ActionItem
+                            icon="sap-icon://table-column"
+                            label="Columns"
+                            press="onColumnHeaderItemPress"
+                        />
+                    </columnmenu:items>
+                </columnmenu:Menu>
+            </table:dependents>
+            <table:noData>
+                <IllustratedMessage enableVerticalResponsiveness="true" />
+            </table:noData>
+            <table:columns>
+                <table:Column
+                    id="_idClmBillDocNo"
+                    width="4rem"
+                    hAlign="Begin"
+                    sortProperty="Item"
+                    headerMenu="_menu"
+                    resizable="true"
+                    autoResizable="true"
+                >
+                    <Label text="Item" />
+                    <table:template>
+                        <Text text="{path:'oModelForItems>Item'}" />
+                    </table:template>
+                </table:Column>
+                <table:Column
+                    id="_idClmDocNo"
+                    width="10rem"
+                    hAlign="End"
+                    sortProperty="Material"
+                    headerMenu="_menu"
+                    resizable="true"
+                    autoResizable="true"
+                >
+                    <Label text="Material Number" />
+                    <table:template>
+                        <Text text="{path:'oModelForItems>Material'}" />
+                    </table:template>
+                </table:Column>
+
+                <table:Column
+                    id="_idClmPortOfLoading"
+                    width="10rem"
+                    hAlign="Begin"
+                    sortProperty="ItemDescription"
+                    headerMenu="_menu"
+                    resizable="true"
+                    autoResizable="true"
+                >
+                    <Label text="Material Description" />
+                    <table:template>
+                        <Text text="{oModelForItems>ItemDescription}" />
+                    </table:template>
+                </table:Column>
+                <table:Column
+                    id="_idClmCHA"
+                    width="6rem"
+                    hAlign="Center"
+                    sortProperty="Uom"
+                    headerMenu="_menu"
+                    resizable="true"
+                    autoResizable="true"
+                >
+                    <Label text="UOM" />
+                    <table:template>
+                        <Text text="{oModelForItems>Uom}" />
+                    </table:template>
+                </table:Column>
+                <table:Column
+                    id="_idClmCustomer"
+                    width="8rem"
+                    hAlign="End"
+                    sortProperty="InvoiceQty"
+                    headerMenu="_menu"
+                    resizable="true"
+                    autoResizable="true"
+                >
+                    <Label text="Invoice Quantity" />
+                    <table:template>
+                        <Text text="{oModelForItems>InvoiceQty}" />
+                    </table:template>
+                </table:Column>
+
+                <table:Column
+                    id="_idClmLETDate"
+                    width="8rem"
+                    hAlign="Center"
+                    sortProperty="InvoiceValue"
+                    headerMenu="_menu"
+                    resizable="true"
+                    autoResizable="true"
+                >
+                    <Label text="Invoice Value" />
+                    <table:template>
+                        <Text text="{oModelForItems>InvoiceValue}" />
+                    </table:template>
+                </table:Column>
+                <table:Column
+                    id="_idClmCommision"
+                    width="6rem"
+                    hAlign="Center"
+                    sortProperty="Commission"
+                    headerMenu="_menu"
+                    resizable="true"
+                    autoResizable="true"
+                >
+                    <Label text="Commission" />
+                    <table:template>
+                        <Input
+                            enabled="{path:'oEditableModel>/sEditable'}"
+                            value="{oModelForItems>Commission}"
+                        />
+                    </table:template>
+                </table:Column>
+                <table:Column
+                    id="_idClmSchemes"
+                    width="6rem"
+                    hAlign="Center"
+                    sortProperty="Insurance"
+                    headerMenu="_menu"
+                    resizable="true"
+                    autoResizable="true"
+                >
+                    <Label text="Insurance" />
+                    <table:template>
+                        <Input
+                            enabled="{path:'oEditableModel>/sEditable'}"
+                            value="{oModelForItems>Insurance}"
+                        />
+                    </table:template>
+                </table:Column>
+                <table:Column
+                    id="_idClmEPCG"
+                    width="6rem"
+                    hAlign="Center"
+                    sortProperty="Freight"
+                    headerMenu="_menu"
+                    resizable="true"
+                    autoResizable="true"
+                >
+                    <Label text="Freight" />
+                    <table:template>
+                        <Input
+                            enabled="{path:'oEditableModel>/sEditable'}"
+                            value="{oModelForItems>Freight}"
+                        />
+                    </table:template>
+                </table:Column>
+                <table:Column
+                    id="_idClmLicDetails"
+                    width="8rem"
+                    hAlign="Begin"
+                    resizable="true"
+                    autoResizable="true"
+                >
+                    <Label text="Enter License Details" />
+                    <table:template>
+                        <Link
+                            text="License Details"
+                            press="onLicenseDetails"
+                        />
+                    </table:template>
+                </table:Column>
+            </table:columns>
+            <!-- <table:rowActionTemplate >
+                <table:RowAction>
+                    <table:items>
+                        <table:RowActionItem
+                            type="Delete"
+                            press="onDelete"
+                            icon="sap-icon://delete"
+                        />
+                    </table:items>
+                </table:RowAction>
+            </table:rowActionTemplate> -->
+        </table:Table>
+    </ScrollContainer>
+</core:FragmentDefinition>

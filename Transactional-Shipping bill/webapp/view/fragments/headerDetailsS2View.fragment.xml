@@ -1,0 +1,127 @@
+<core:FragmentDefinition
+    height="100%"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+>
+    <f:SimpleForm
+        id="_IdSFHeaderDetailsSection2"
+        class="sapUiNoContentPadding"
+        layout="ColumnLayout"
+        columnsM="3"
+        columnsL="3"
+        columnsXL="3"
+        adjustLabelSpan="true"
+        editable="true"
+    >
+        <f:content>
+            <Label
+                id="_IdLblCust"
+                text="Customer"
+            />
+            <Text
+                id="__IDGenText5"
+                text="{oModelForHeader>/Zcustomer}"
+            />
+
+            <Label
+                id="_IdLblLETExpoDate"
+                text="LET Export Date"
+            />
+            <Text text="{oModelForHeader>/ZletExportDate}" />
+
+            <Label
+                id="_IdLblScheme"
+                text="Scheme"
+            />
+            <Text text="{oModelForHeader>/Zschemes}" />
+
+            <Label
+                id="_IdLblEPCG"
+                text="EPCG"
+            />
+            <Text text="{oModelForHeader>/Zepcg}" />
+
+            <Label
+                id="_IdLblLOC"
+                text="Letter of Credit"
+            />
+            <Text text="{oModelForHeader>/Zloc}" />
+
+            <Label
+                id="_IdLblReabate"
+                text="Reabate"
+            />
+
+            <Text text="" />
+            <Label
+                id="_IdLblLUTNo"
+                text="LUT No."
+            />
+            <Text text="" />
+
+            <!--  -->
+
+            <Label
+                id="_IDLblFOBValue"
+                text="FOB Value(INR)"
+            />
+            <Text />
+            <Label
+                id="_IDLblFOBValueFC"
+                text="FOB Value(FC)"
+            />
+            <Text text="{oModelForHeader>/FobValueFc}" />
+
+            <Label
+                id="_IdLblExchangeRate"
+                text="Exchange Rate"
+            />
+            <Text
+                id="_IdInpExchangeRateValue"
+                text="{oModelForHeader>/ZexchangeRate}"
+            />
+            <Label
+                id="_IdLblRODTEP"
+                text="RODTEP"
+            />
+
+            <Text text="{oModelForHeader>/Zrodtep}" />
+
+            <Label
+                id="_IdLblContainerNo"
+                text="Container No"
+            />
+            <Text
+                id="_IdInpContainerNo"
+                text="{oModelForHeader>/ZcontainerNo}"
+            />
+
+            <Label
+                id="_IdLblRebateAmt"
+                text="Rebate Amt"
+            />
+            <Text />
+
+            <Label
+                id="_IdLblRLUTDate"
+                text="LUT Date"
+            />
+
+            <Text />
+            <Label
+                id="_IdLblReasonForAmendment"
+                text="Reason for Amendment"
+            />
+            <Text text="" />
+            <Label
+                id="_IdLblSecCreatedBy"
+                text="Created By"
+            />
+            <Text
+                id="_IdInpCreatedBy"
+                text="{path:'oModelForHeader>/ZcreateBy'}"
+            />
+        </f:content>
+    </f:SimpleForm>
+</core:FragmentDefinition>

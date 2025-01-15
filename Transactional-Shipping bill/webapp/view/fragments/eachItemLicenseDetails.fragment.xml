@@ -1,0 +1,293 @@
+<core:FragmentDefinition
+    height="100%"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:table="sap.ui.table"
+    xmlns:sap.ui.fl="sap.ui.fl"
+>
+    <Dialog
+        id="__IDLicenses"
+        title="Licenses Details"
+        resizable="true"
+        draggable="true"
+        icon="sap-icon://provision"
+        titleAlignment="Center"
+    >
+        <customHeader>
+            <Bar>
+                <contentMiddle>
+                    <core:Icon src="sap-icon://copy" />
+                    <Title text="Licenses Details" />
+                </contentMiddle>
+
+                <contentRight>
+                    <Button
+                        icon="sap-icon://decline"
+                        press="onLicenseDialogClose"
+                    />
+                    <!-- visible="{oEditableModel>/view}" -->
+                </contentRight>
+            </Bar>
+        </customHeader>
+
+        <ScrollContainer
+            id="__IDGenScrollContainerLicensesDetails"
+            width="100%"
+            height="auto"
+            horizontal="true"
+            visible="{oEditableModel>/edit}"
+        >
+            <table:Table
+                id="idTblForItemsLicensesDetail"
+                sort="onSort"
+                columnResize="onColumnResize"
+                columnMove="onColumnMove"
+                rowMode="Auto"
+                ariaLabelledBy="title"
+                sap.ui.fl:flexibility="sap/m/flexibility/EngineFlex"
+                selectionMode="None"
+                rows="{oModelForLicenses>/results}"
+                showColumnVisibilityMenu="true"
+                enableColumnFreeze="false"
+                enableCellFilter="true"
+                columnSelect="onColumnSelect"
+                cellContextmenu="onProductIdCellContextMenu"
+                enableGrouping="true"
+                rowSelectionChange="onShowDetails"
+                rowActionCount="1"
+            >
+                <table:extension>
+                    <OverflowToolbar style="Clear">
+                        <Title id="__title" />
+                        <ToolbarSpacer />
+                        <Button
+                            id="idBtnCreateLicItem"
+                            icon="sap-icon://add"
+                            press="onAddNewEmptyLicense"
+                            type="Transparent"
+                            tooltip="Add new Item"
+                        />
+                    </OverflowToolbar>
+                </table:extension>
+
+                <table:noData>
+                    <IllustratedMessage enableVerticalResponsiveness="true" />
+                </table:noData>
+
+                <table:columns>
+                    <table:Column
+                        id="idLicItemNumber"
+                        hAlign="Begin"
+                        sortProperty="Item"
+                        resizable="true"
+                        autoResizable="true"
+                    >
+                        <Label text="Item Number" />
+                        <table:template>
+                            <Text text="{path:'oModelForLicenses>Item'}" />
+                        </table:template>
+                    </table:Column>
+                    <table:Column
+                        id="idLicMatNumber"
+                        hAlign="End"
+                        sortProperty="Material"
+                        resizable="true"
+                        autoResizable="true"
+                    >
+                        <Label text="Material Number" />
+                        <table:template>
+                            <Text text="{path:'oModelForLicenses>Material'}" />
+                        </table:template>
+                    </table:Column>
+
+                    <table:Column
+                        id="idLicLicences"
+                        hAlign="Begin"
+                        sortProperty="Licences"
+                        resizable="true"
+                        autoResizable="true"
+                    >
+                        <Label text="Licences" />
+                        <table:template>
+                            <Input value="{oModelForLicenses>Licences}" />
+                        </table:template>
+                    </table:Column>
+                    <table:Column
+                        id="idLicLicencesType"
+                        hAlign="Center"
+                        resizable="true"
+                        autoResizable="true"
+                    >
+                        <Label text="Licence type" />
+                        <table:template>
+                            <Input />
+                        </table:template>
+                    </table:Column>
+                    <table:Column
+                        id="idLicQuantity"
+                        hAlign="End"
+                        sortProperty="Quantity"
+                        resizable="true"
+                        autoResizable="true"
+                    >
+                        <Label text="Quantity" />
+                        <table:template>
+                            <Input
+                                value="{oModelForLicenses>Quantity}"
+                                change="onQuantityInputLiveChange"
+                            />
+                        </table:template>
+                    </table:Column>
+
+                    <table:Column
+                        id="idLicValue"
+                        hAlign="Center"
+                        sortProperty="Value"
+                        resizable="true"
+                        autoResizable="true"
+                    >
+                        <Label text="Invoice Value" />
+                        <table:template>
+                            <Input value="{oModelForLicenses>Value}" />
+                        </table:template>
+                    </table:Column>
+
+                    <table:Column
+                        id="idLicImportItemName"
+                        hAlign="Center"
+                        resizable="true"
+                        autoResizable="true"
+                    >
+                        <Label text="Import Item Name" />
+                        <table:template>
+                            <Input value="" />
+                        </table:template>
+                    </table:Column>
+                    <table:Column
+                        id="idLicImportQtyLicence"
+                        hAlign="Center"
+                        resizable="true"
+                        autoResizable="true"
+                    >
+                        <Label text="Import Qty as per Licence" />
+                        <table:template>
+                            <Input value="" />
+                        </table:template>
+                    </table:Column>
+                </table:columns>
+
+                <table:rowActionTemplate>
+                    <table:RowAction>
+                        <table:items>
+                            <table:RowActionItem
+                                type="Delete"
+                                press="onLicenseDelete"
+                                icon="sap-icon://delete"
+                            />
+                        </table:items>
+                    </table:RowAction>
+                </table:rowActionTemplate>
+            </table:Table>
+        </ScrollContainer>
+        <ScrollContainer
+            id="___IDGenScrollContainerLicensesDetails"
+            width="100%"
+            height="auto"
+            horizontal="true"
+            visible="{oEditableModel>/view}"
+        >
+            <Table
+                id="__idTblForItemsLicensesDetail"
+                items="{oModelForLicenses>/results}"
+                class=""
+            >
+                <headerToolbar>
+                    <Toolbar>
+                        <Title text="Licenses Details" />
+                        <ToolbarSpacer />
+                        <Button
+                            icon="sap-icon://add"
+                            press="onAddNewEmptyLicense"
+                            visible="false"
+                        />
+                    </Toolbar>
+                </headerToolbar>
+                <columns>
+                    <Column hAlign="Center">
+                        <Text text="Item Number" />
+                    </Column>
+                    <Column hAlign="Center">
+                        <Text text="Material Number" />
+                    </Column>
+                    <Column
+                        hAlign="Center"
+                        minScreenWidth="Tablet"
+                        demandPopin="true"
+                    >
+                        <Text text="Licences" />
+                    </Column>
+
+                    <Column
+                        hAlign="Center"
+                        minScreenWidth="Tablet"
+                        demandPopin="true"
+                    >
+                        <Text text="Licence type" />
+                    </Column>
+                    <Column
+                        hAlign="Center"
+                        minScreenWidth="Tablet"
+                        demandPopin="true"
+                    >
+                        <Text text="Quantity" />
+                    </Column>
+                    <Column
+                        hAlign="Center"
+                        minScreenWidth="Tablet"
+                        demandPopin="true"
+                    >
+                        <Text text="Value" />
+                    </Column>
+                    <Column
+                        hAlign="Center"
+                        minScreenWidth="Tablet"
+                        demandPopin="true"
+                    >
+                        <Text text="Import Item Name" />
+                    </Column>
+                    <Column
+                        hAlign="Center"
+                        minScreenWidth="Tablet"
+                        demandPopin="true"
+                    >
+                        <Text text="Import Qty as per Licence" />
+                    </Column>
+                </columns>
+
+                <items>
+                    <ColumnListItem vAlign="Middle">
+                        <cells>
+                            <Text text="{oModelForLicenses>Item}" />
+                            <Text text="{oModelForLicenses>Material}" />
+                            <Text text="{oModelForLicenses>Licences}" />
+                            <Text />
+                            <Text text="{oModelForLicenses>Quantity}" />
+                            <Text text="{oModelForLicenses>Value}" />
+                            <Text />
+                            <Text />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </ScrollContainer>
+
+        <endButton>
+            <Button
+                id="__IDLicGenButton2"
+                text="Save"
+                press="onLicenseDialogClose"
+                visible="{oEditableModel>/edit}"
+            />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

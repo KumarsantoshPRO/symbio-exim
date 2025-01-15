@@ -1,0 +1,23 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <SelectDialog
+        id="idSDCompanyCodeF4"
+        title="Company Code"
+        noDataText="No Data"
+        search="onValueHelpSearch_CompanyCode"
+        liveChange="onValueHelpSearch_CompanyCode"
+        confirm="onValueHelpConfirm_CompanyCode"
+        contentWidth="250px"
+    >
+        <items>
+            <StandardListItem
+                id="idSLCompanyCodeValueHelp"
+                title="{CompanyCode}"
+                description="{CompanyCodeName}, {CityName}"
+                wrapping="true"
+            />
+        </items>
+    </SelectDialog>
+</core:FragmentDefinition>

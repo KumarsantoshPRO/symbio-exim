@@ -1,0 +1,297 @@
+<mvc:View
+    controllerName="zpro.sk.mittalcoin.exim.loc.export.locexport.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    height="100%"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:table="sap.ui.table"
+    xmlns:columnmenu="sap.m.table.columnmenu"
+    xmlns:sap.ui.fl="sap.ui.fl"
+>
+    <f:DynamicPage fitContent="true">
+        <f:title>
+            <f:DynamicPageTitle stateChange="onDPTStateChange">
+                <f:heading>
+                    <Title
+                        text="Letter of credit - export"
+                        textAlign="Center"
+                        titleStyle="H3"
+                    />
+                </f:heading>
+            </f:DynamicPageTitle>
+        </f:title>
+
+        <f:header>
+         <f:DynamicPageHeader>
+                <f:content>
+                    <fb:FilterBar
+                        id="filterbar"
+                        persistencyKey="myPersKey"
+                        useToolbar="false"
+                        search="onSearch"
+                    >
+                        <fb:filterGroupItems>
+                            <fb:FilterGroupItem
+                                name="Name"
+                                label="LC Number"
+                                groupName="Group1"
+                                visibleInFilterBar="true"
+                            >
+                                <fb:control>
+                                    <Input
+                                        value=""
+                                        placeholder="LC Number"
+                                        showValueHelp="true"
+                                        valueHelpRequest="onLCNumberValuelHelp"
+                                    />
+                                </fb:control>
+                            </fb:FilterGroupItem>
+
+                            <fb:FilterGroupItem
+                                name="Name1"
+                                label="Sales Contract"
+                                groupName="Group1"
+                                visibleInFilterBar="true"
+                            >
+                                <fb:control>
+                                    <Input
+                                        value=""
+                                        placeholder="Sales Contract"
+                                        showValueHelp="true"
+                                        valueHelpRequest="onContactNumberValuelHelp"
+                                    />
+                                </fb:control>
+                            </fb:FilterGroupItem>
+
+                            <fb:FilterGroupItem
+                                name="Name2"
+                                label="Sales Order"
+                                groupName="Group1"
+                                visibleInFilterBar="true"
+                            >
+                                <fb:control>
+                                    <Input
+                                        value=""
+                                        placeholder="Sales Order"
+                                        showValueHelp="true"
+                                        valueHelpRequest="onPINumberValuelHelp"
+                                    />
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                        </fb:filterGroupItems>
+                    </fb:FilterBar>
+                </f:content>
+            </f:DynamicPageHeader>
+        </f:header>
+
+        <f:content>
+            <table:Table
+                id="table"
+                sort="onSort"
+                columnResize="onColumnResize"
+                columnMove="onColumnMove"
+                rowMode="Auto"
+                ariaLabelledBy="title"
+                sap.ui.fl:flexibility="sap/m/flexibility/EngineFlex"
+                selectionMode="Single"
+                selectionBehavior="Row"
+                rows="{oModelForTable>/}"
+                showColumnVisibilityMenu="true"
+                enableColumnFreeze="false"
+                enableCellFilter="true"
+                columnSelect="onColumnSelect"
+                cellContextmenu="onProductIdCellContextMenu"
+                enableGrouping="true"
+                rowSelectionChange="onShowLCDetails"
+                rowActionCount="2"
+            >
+                <table:extension>
+                    <OverflowToolbar style="Clear">
+                        <Title id="title" />
+                        <ToolbarSpacer />
+                        <Button
+                            text="Create"
+                            press="onAddNewLOC"
+                            type="Transparent"
+                            tooltip="Create new"
+                        />
+                        <Button
+                            id="idDeleteRow"
+                            text="Delete"
+                            press="onDeleteRow"
+                            type="Transparent"
+                            enabled="false"
+                            visible="false"
+                        />
+                        <Button
+                            icon="sap-icon://action-settings"
+                            press="openPersoDialog"
+                        />
+                        <VBox visible="false">
+                            <SegmentedButton selectedKey="less">
+                                <items>
+                                    <SegmentedButtonItem
+                                        icon="sap-icon://detail-less"
+                                        key="less"
+                                    />
+                                    <SegmentedButtonItem
+                                        icon="sap-icon://detail-more"
+                                    />
+                                </items>
+                            </SegmentedButton>
+                        </VBox>
+                        <Button
+                            icon="sap-icon://excel-attachment"
+                            press="onExport"
+                        />
+                    </OverflowToolbar>
+                </table:extension>
+
+                <table:dependents>
+                    <columnmenu:Menu id="menu">
+                        <columnmenu:items>
+                            <columnmenu:ActionItem
+                                icon="sap-icon://sort"
+                                label="Sort"
+                                press="onColumnHeaderItemPress"
+                            />
+                            <columnmenu:ActionItem
+                                icon="sap-icon://filter"
+                                label="Filter"
+                                press="onColumnHeaderItemPress"
+                            />
+                            <columnmenu:ActionItem
+                                icon="sap-icon://group-2"
+                                label="Groups"
+                                press="onColumnHeaderItemPress"
+                            />
+
+                            <columnmenu:ActionItem
+                                icon="sap-icon://table-column"
+                                label="Columns"
+                                press="onColumnHeaderItemPress"
+                            />
+                        </columnmenu:items>
+                    </columnmenu:Menu>
+                </table:dependents>
+
+                <table:noData>
+                    <IllustratedMessage enableVerticalResponsiveness="true" />
+                </table:noData>
+
+                <table:columns>
+                    <table:Column
+                        id="LcNo"
+                        sortProperty="LcNo"
+                        headerMenu="menu"
+                    >
+                        <Label wrapping="true" text="LC Number" />
+                        <table:template>
+                            <Label wrapping="true" text="{oModelForTable>LcNo}" />
+                        </table:template>
+                    </table:Column>
+                    <table:Column
+                        id="SalesContract"
+                        sortProperty="SalesContract"
+                        headerMenu="menu"
+                    >
+                        <Label wrapping="true" text="Sales Contract" />
+                        <table:template>
+                            <Label wrapping="true" text="{oModelForTable>SalesContract}" />
+                        </table:template>
+                    </table:Column>
+
+                    <table:Column
+                        id="SalesOrder"
+                        sortProperty="SalesOrder"
+                        headerMenu="menu"
+                    >
+                        <Label wrapping="true" text="Sales Order" />
+                        <table:template>
+                            <Label wrapping="true" text="{oModelForTable>SalesOrder}" />
+                        </table:template>
+                    </table:Column>
+                    <table:Column
+                        id="ShipmetLastDateOri"
+                        sortProperty="ShipmetLastDateOri"
+                        headerMenu="menu"
+                    >
+                        <Label wrapping="true" text="Shipping Last Date - original" />
+                        <table:template>
+                            <Label wrapping="true"
+                                text="{path:'oModelForTable>ShipmetLastDateOri', type: 'sap.ui.model.type.Date', formatOptions: {UTC: true}}"
+                            />
+                        </table:template>
+                    </table:Column>
+                    <table:Column
+                        id="LatestDocumentDateOri"
+                        sortProperty="LatestDocumentDateOri"
+                        headerMenu="menu"
+                    >
+                        <Label wrapping="true" text="Latest document date - Original" />
+                        <table:template>
+                            <Label wrapping="true"
+                                text="{path:'oModelForTable>LatestDocumentDateOri', type: 'sap.ui.model.type.Date', formatOptions: {UTC: true}}"
+                            />
+                        </table:template>
+                    </table:Column>
+
+                    <table:Column
+                        id="ShipmetLastDateAmend"
+                        sortProperty="ShipmetLastDateAmend"
+                        headerMenu="menu"
+                    >
+                        <Label wrapping="true" text="Shipment Last Date - Amendment" />
+                        <table:template>
+                            <Label wrapping="true"
+                                text="{path:'oModelForTable>ShipmetLastDateAmend', type: 'sap.ui.model.type.Date', formatOptions: {UTC: true}}"
+                            />
+                        </table:template>
+                    </table:Column>
+                    <table:Column
+                        id="LatestDocumentDateAmend"
+                        sortProperty="LatestDocumentDateAmend"
+                        headerMenu="menu"
+                    >
+                        <Label wrapping="true" text="Latest document date - Amendment" />
+                        <table:template>
+                            <Label wrapping="true"
+                                text="{path:'oModelForTable>LatestDocumentDateAmend', type: 'sap.ui.model.type.Date', formatOptions: {UTC: true}}"
+                            />
+                        </table:template>
+                    </table:Column>
+                    <table:Column
+                        id="LcIssueDateAmend"
+                        sortProperty="LcIssueDateAmend"
+                        headerMenu="menu"
+                    >
+                        <Label wrapping="true" text="LC Issue Date - Amendment" />
+                        <table:template>
+                            <Label wrapping="true"
+                                text="{path:'oModelForTable>LcIssueDateAmend', type: 'sap.ui.model.type.Date', formatOptions: {UTC: true}}"
+                            />
+                        </table:template>
+                    </table:Column>
+                </table:columns>
+
+                <table:rowActionTemplate>
+                    <table:RowAction>
+                        <table:items>
+                            <table:RowActionItem
+                                type="Navigation"
+                                press="onShowLCDetails"
+                            />
+                            <table:RowActionItem
+                                type="Delete"
+                                press="onDeletePress"
+                                icon="sap-icon://delete"
+                            />
+                        </table:items>
+                    </table:RowAction>
+                </table:rowActionTemplate>
+            </table:Table>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

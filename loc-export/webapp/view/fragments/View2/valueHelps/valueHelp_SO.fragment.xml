@@ -1,0 +1,22 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <SelectDialog
+        id="idSDSOF4"
+        title="SO Number"
+        noDataText="No Data"
+        search="onValueHelpSearch_SO"
+        liveChange="onValueHelpSearch_SO"
+        confirm="onValueHelpConfirm_SO"
+        contentWidth="250px"
+    >
+        <items>
+            <StandardListItem
+                id="idSLSOValueHelp"
+                title="{SalesOrder}"
+                wrapping="true"
+            />
+        </items>
+    </SelectDialog>
+</core:FragmentDefinition>

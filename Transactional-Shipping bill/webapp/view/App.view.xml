@@ -1,0 +1,13 @@
+<mvc:View
+    controllerName="zmg.pro.exim.transactionalshippingbill.exim.controller.App"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+>
+ <App id="app">
+    </App>
+
+</mvc:View>
+
+   

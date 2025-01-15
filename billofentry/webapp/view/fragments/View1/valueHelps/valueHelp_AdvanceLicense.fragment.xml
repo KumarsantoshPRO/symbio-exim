@@ -1,0 +1,22 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <SelectDialog
+        id="idSDAdvanceLicenseF4"
+        title="Advance License Number"
+        noDataText="No Data"
+        search="onValueHelpSearch_AdvanceLicense"
+        liveChange="onValueHelpSearch_AdvanceLicense"
+        confirm="onValueHelpConfirm_AdvanceLicense"
+        contentWidth="250px"
+    >
+        <items>
+            <StandardListItem
+                id="idSLAdvanceLicenseValueHelp"
+                title="{Advlicno}"
+                wrapping="true"
+            />
+        </items>
+    </SelectDialog>
+</core:FragmentDefinition>

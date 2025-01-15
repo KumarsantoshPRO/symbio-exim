@@ -1,0 +1,204 @@
+<core:FragmentDefinition
+    xmlns:commons="sap.suite.ui.commons"
+    height="100%"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:l="sap.ui.layout"
+    xmlns:u="sap.ui.unified"
+>
+    <ScrollContainer
+        id="_IDGenScrollContainerItemDetails"
+        width="100%"
+        height="auto"
+        horizontal="true"
+    >
+        <Table
+            id="idTblForItemsDetail"
+            items="{oModelForItems>/}"
+            class=""
+        >
+            <headerToolbar>
+                <Toolbar id="_IDGenToolbar1">
+                    <Title
+                        id="_IDGenTitle1"
+                        text="Assignment Details"
+                    />
+                    <ToolbarSpacer id="_IDGenToolbarSpacer1" />
+                    <Button
+                        icon="sap-icon://add"
+                        press="onAddNewEmptyItem"
+                    />
+                </Toolbar>
+            </headerToolbar>
+            <columns>
+                <Column
+                    id="TableColumn1"
+                    hAlign="Center"
+                    width="10rem"
+                >
+                    <Text text="Delete" />
+                </Column>
+                <Column
+                    id="TableColumn2"
+                    hAlign="Center"
+                    width="10rem"
+                >
+                    <Text text="Item" />
+                </Column>
+                <Column
+                    id="TableColumn3"
+                    hAlign="Center"
+                    width="10rem"
+                >
+                    <Text text="Material Number" />
+                </Column>
+                <Column
+                    id="TableColumn4"
+                    hAlign="Center"
+                    width="10rem"
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                >
+                    <Text text="Material Description" />
+                </Column>
+
+                <Column
+                    id="TableColumn5"
+                    hAlign="Center"
+                    width="10rem"
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                >
+                    <Text
+                        id="TBUOM"
+                        text="UOM"
+                    />
+                </Column>
+                <Column
+                    id="TableColumn6"
+                    hAlign="Center"
+                    width="10rem"
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                >
+                    <Text
+                        id="TBInvoiceValue"
+                        text="Invoice Quantity"
+                    />
+                </Column>
+                <Column
+                    id="TableColumn7"
+                    hAlign="Center"
+                    width="10rem"
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                >
+                    <Text text="Invoice Value" />
+                </Column>
+                <Column
+                    id="TableColumn8"
+                    hAlign="Center"
+                    width="10rem"
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                >
+                    <Text text="Commission" />
+                </Column>
+                <Column
+                    id="TableColumn9"
+                    hAlign="Center"
+                    width="10rem"
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                >
+                    <Text text="Insurance" />
+                </Column>
+                <Column
+                    id="TableColumn10"
+                    hAlign="Center"
+                    width="15rem"
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                >
+                    <Text text="Freight" />
+                </Column>
+                <Column
+                    id="TableColumn11"
+                    hAlign="Center"
+                    width="15rem"
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                >
+                    <Text text="FOB" />
+                </Column>
+                <Column
+                    id="TableColumn12"
+                    hAlign="Center"
+                    width="10rem"
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                >
+                    <Text
+                        id="TBRodtepCurrency"
+                        text="Enter License Details"
+                    />
+                </Column>
+            </columns>
+
+            <items>
+                <ColumnListItem
+                    id="_IDGenColumnListItem1"
+                    vAlign="Middle"
+                >
+                    <cells>
+                        <Button
+                            icon="sap-icon://delete"
+                            press="onDelete"
+                        />
+                        <Input
+                            value="{path:'oModelForItems>BillingDocumentItem'}"
+                        />
+                        <Input value="{path:'oModelForItems>Material'}" />
+                        <Input
+                            value="{path:'oModelForItems>ProductDescription'}"
+                        />
+                        <Input value="{path:'oModelForItems>BaseUnit'}" />
+                        <Input
+                            value="{path:'oModelForItems>BillingQuantity'}"
+                        />
+                        <Input value="{path:'oModelForItems>NetAmount'}" />
+
+                        <Input value="" />
+                        <Input value="" />
+                        <HBox>
+                            <Input
+                                value=""
+                                width="8rem"
+                            />
+                            <Input
+                                value=""
+                                width="5rem"
+                            />
+                        </HBox>
+                        <HBox>
+                            <Input
+                                value=""
+                                width="8rem"
+                            />
+                            <Input
+                                value=""
+                                width="5rem"
+                            />
+                        </HBox>
+                        <Link
+                            id="Licenses"
+                            text="License Details"
+                            press="onLicenseDetails"
+                        />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+    </ScrollContainer>
+</core:FragmentDefinition>

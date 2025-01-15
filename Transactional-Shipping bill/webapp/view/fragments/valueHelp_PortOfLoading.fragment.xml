@@ -1,0 +1,23 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <SelectDialog
+        id="idSDportOfLoadingF4"
+        title="Country Of BL"
+        noDataText="No Data"
+        search="onValueHelpSearch_portOfLoading"
+        liveChange="onValueHelpSearch_portOfLoading"
+        confirm="onValueHelpConfirm_portOfLoading"
+        contentWidth="250px" 
+    >
+        <items>
+            <StandardListItem
+                id="idSLportOfLoadingValueHelp"
+                title="{PortCode}"
+                wrapping="true"
+                
+            />
+        </items>
+    </SelectDialog>
+</core:FragmentDefinition>

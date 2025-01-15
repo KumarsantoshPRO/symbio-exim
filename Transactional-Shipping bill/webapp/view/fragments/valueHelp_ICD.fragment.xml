@@ -1,0 +1,23 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <SelectDialog
+        id="idSDICDF4"
+        title="Country Of BL"
+        noDataText="No Data"
+        search="onValueHelpSearch_ICD"
+        liveChange="onValueHelpSearch_ICD"
+        confirm="onValueHelpConfirm_ICD"
+        contentWidth="250px" 
+    >
+        <items>
+            <StandardListItem
+                id="idSLICDValueHelp"
+                title="{PortCode}"
+                wrapping="true"
+                
+            />
+        </items>
+    </SelectDialog>
+</core:FragmentDefinition>

@@ -1,0 +1,144 @@
+     <table:Table
+            id="idTblForItemsLicensesDetail"
+            sort="onSort"
+            columnResize="onColumnResize"
+            columnMove="onColumnMove"
+            rowMode="Auto"
+            ariaLabelledBy="title"
+            sap.ui.fl:flexibility="sap/m/flexibility/EngineFlex"
+            selectionMode="None"
+            rows="{oModelForLicenses>/results}"
+            showColumnVisibilityMenu="true"
+            enableColumnFreeze="false"
+            enableCellFilter="true"
+            columnSelect="onColumnSelect"
+            cellContextmenu="onProductIdCellContextMenu"
+            enableGrouping="true"
+            rowSelectionChange="onShowDetails"
+            rowActionCount="1"
+          
+        >
+              <table:extension>
+                <OverflowToolbar style="Clear">
+                    <Title id="_title" />
+                    <ToolbarSpacer />
+                    <Button
+                        id="idBtnCreateItem"
+                        icon="sap-icon://add"
+                        press="onAddNewEmptyItem"
+                        type="Transparent"
+                        tooltip="Add new Item"
+                        visible="false"
+                    />
+ </OverflowToolbar>
+            </table:extension>
+           
+            <table:noData>
+                <IllustratedMessage enableVerticalResponsiveness="true" />
+            </table:noData>
+
+            <table:columns>
+                <table:Column
+                    id="idLicItemNumber"
+                    width="4rem"
+                    hAlign="Begin"
+                    sortProperty="Item"
+                    
+                    resizable="true"
+                    autoResizable="true"
+                    
+                >
+                    <Label text="Item Number" />
+                    <table:template>
+                        <Input  
+                            value="{path:'oModelForLicenses>Item'}"
+                        />
+                    </table:template>
+                </table:Column>
+                <table:Column
+                    id="idLicMatNumber"
+                    width="10rem"
+                    hAlign="End"
+                    sortProperty="Material"
+                   
+                    resizable="true"
+                    autoResizable="true"
+                >
+                    <Label text="Material Number" />
+                    <table:template>
+                        <Input  value="{path:'oModelForLicenses>Material'}" />
+                    </table:template>
+                </table:Column>
+
+                <table:Column
+                    id="idLicLicences"
+                    width="10rem"
+                    hAlign="Begin"
+                    sortProperty="Licences"
+                   
+                    resizable="true"
+                    autoResizable="true"
+                >
+                    <Label text="Licences" />
+                    <table:template>
+                        <Input  value="{oModelForLicenses>Licences}" />
+                    </table:template>
+                </table:Column>
+                <table:Column
+                    id="idLicLicencesType"
+                    width="6rem"
+                    hAlign="Center"
+                    resizable="true"
+                    autoResizable="true"
+                >
+                    <Label text="Licence type" />
+                    <table:template>
+                        <Input  />
+                    </table:template>
+                </table:Column>
+                <table:Column
+                    id="idLicQuantity"
+                    width="8rem"
+                    hAlign="End"
+                    sortProperty="Quantity"
+                   
+                    resizable="true"
+                    autoResizable="true"
+                >
+                    <Label text="Quantity" />
+                    <table:template>
+                        <Input  value="{oModelForLicenses>Quantity}" />
+                    </table:template>
+                </table:Column>
+
+                <table:Column
+                    id="idLicValue"
+                    width="8rem"
+                    hAlign="Center"
+                    sortProperty="Value"
+                   
+                    resizable="true"
+                    autoResizable="true"
+                >
+                    <Label text="Invoice Value" />
+                    <table:template>
+                        <Input  value="{oModelForLicenses>Value}" />
+                    </table:template>
+                </table:Column>
+                 
+            </table:columns>
+
+        
+            <table:rowActionTemplate >
+                <table:RowAction>
+                    <table:items>
+                        <table:RowActionItem
+                            type="Delete"
+                            press="onLicenseDelete"
+                            icon="sap-icon://delete"
+                        />
+                    </table:items>
+                </table:RowAction>
+            </table:rowActionTemplate>
+
+        </table:Table>

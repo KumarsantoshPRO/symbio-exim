@@ -1,0 +1,23 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <SelectDialog
+        id="idSDPlantF4"
+        title="Plant"
+        noDataText="No Data"
+        search="onValueHelpSearch_Plant"
+        liveChange="onValueHelpSearch_Plant"
+        confirm="onValueHelpConfirm_Plant"
+        contentWidth="250px"
+    >
+        <items>
+            <StandardListItem
+                id="idSLPlantValueHelp"
+                title="{Plant}"
+                description="{PlantName}"
+                wrapping="true"
+            />
+        </items>
+    </SelectDialog>
+</core:FragmentDefinition>

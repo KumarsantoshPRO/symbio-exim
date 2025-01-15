@@ -1,0 +1,176 @@
+<core:FragmentDefinition
+    height="100%"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+>
+    <f:SimpleForm
+        id="IdSFHeaderDetailsSection2"
+        class="sapUiNoContentPadding"
+        layout="ColumnLayout"
+        columnsM="3"
+        columnsL="3"
+        columnsXL="3"
+        adjustLabelSpan="true"
+        editable="true"
+    >
+        <f:content>
+            <Label
+                id="IdLblCust"
+                text="Customer"
+            />
+            <Input
+                id="_IDGenInput5"
+                value="{oModelForHeader>/Zcustomer}"
+                enabled="false"
+            />
+
+            <Label
+                id="IdLblLETExpoDate"
+                text="LET Export Date"
+            />
+            <DatePicker value="{oModelForHeader>/ZletExportDate}" />
+
+            <Label
+                id="IdLblScheme"
+                text="Scheme"
+            />
+            <Select
+                forceSelection="true"
+                selectedKey="{oModelForHeader>/Zschemes}"
+                id="SchemesValue"
+            >
+                <core:Item
+                    id="itemSchemes1"
+                    key="adl"
+                    text="ADL"
+                />
+                <core:Item
+                    id="itemSchemes2"
+                    key="dbr"
+                    text="DBR"
+                />
+                <core:Item
+                    id="itemSchemes3"
+                    key="air"
+                    text="AIR"
+                />
+                <core:Item
+                    id="itemSchemes4"
+                    key="no"
+                    text="No schemes"
+                />
+            </Select>
+
+            <Label
+                id="IdLblEPCG"
+                text="EPCG"
+            />
+            <Input value="{oModelForHeader>/Zepcg}" />
+
+            <Label
+                id="IdLblLOC"
+                text="Letter of Credit"
+            />
+            <Input value="{oModelForHeader>/Zloc}" />
+
+            <Label
+                id="IdLblReabate"
+                text="Reabate"
+            />
+
+            <Select
+                forceSelection="true"
+                selectedKey=""
+            >
+                <core:Item
+                    key="yes"
+                    text="Yes"
+                />
+                <core:Item
+                    key="no"
+                    text="No"
+                />
+            </Select>
+            <Label
+                id="IdLblLUTNo"
+                text="LUT No."
+            />
+            <TextArea value="" />
+
+            <!--  -->
+
+            <Label
+                id="IDLblFOBValue"
+                text="FOB Value(INR)"
+            />
+            <Input value="{oModelForHeader>/ZfobValue}" />
+            <Label
+                id="IDLblFOBValueFC"
+                text="FOB Value(FC)"
+            />
+            <Input value="{oModelForHeader>/FobValueFc}" />
+
+            <Label
+                id="IdLblExchangeRate"
+                text="Exchange Rate"
+            />
+            <Input id="IdInpExchangeRateValue" />
+            <!-- value="{oModelForHeader>/ZexchangeRate}" -->
+            <Label
+                id="IdLblRODTEP"
+                text="RODTEP"
+            />
+
+            <Select
+                forceSelection="true"
+                selectedKey="{oModelForHeader>/Zrodtep}"
+            >
+                <core:Item
+                    key="1"
+                    text="Yes"
+                />
+                <core:Item
+                    key="3"
+                    text="No"
+                />
+            </Select>
+
+            <Label
+                id="IdLblContainerNo"
+                text="Container No"
+            />
+            <Input
+                id="IdInpContainerNo"
+                value="{oModelForHeader>/ZcontainerNo}"
+                maxLength="11"
+            />
+
+            <Label
+                id="IdLblRebateAmt"
+                text="Rebate Amt"
+            />
+            <Input />
+
+            <Label
+                id="IdLblRLUTDate"
+                text="LUT Date"
+            />
+
+            <DatePicker />
+            <Label
+                id="IdLblReasonForAmendment"
+                text="Reason for Amendment"
+            />
+            <TextArea value="" />
+            <Label
+                id="IdLblSecCreatedBy"
+                text="Created By"
+            />
+            <Input
+                id="IdInpCreatedBy"
+                value="{path:'oModelForHeader>/ZcreateBy'}"
+            />
+        </f:content>
+    </f:SimpleForm>
+</core:FragmentDefinition>

@@ -1,0 +1,76 @@
+<core:FragmentDefinition
+    height="100%"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:form="sap.ui.layout.form"
+>
+    <form:SimpleForm
+        class="sapUiResponsiveContentPadding"
+        layout="ColumnLayout"
+        columnsL="3"
+        columnsM="3"
+        columnsXL="3"
+    >
+        <form:content>
+            <Label text='Bill of Entry' />
+            <Text text='{oModelForHeader>/BillEntry}' />
+
+            <Label text='Purchase Order No.' />
+            <Text text='{oModelForHeader>/PoNo}' />
+
+            <Label text='Supplier Invoice No.' />
+            <Text text='{oModelForHeader>/SupplierInvoiceNo}' />
+
+            <Label text='Supplier Code' />
+            <Text text='{oModelForHeader>/SupplierCode}' />
+
+            <Label text='Supplier Name' />
+            <Text text='{oModelForHeader>/SupplierName}' />
+
+            <Label text='BL No' />
+            <Text text='{oModelForHeader>/BlNo}' />
+
+            <Label text='Shipping Line' />
+            <Text text='{oModelForHeader>/ShippingLine}' />
+
+            <Label text='ICD' />
+            <Text text='{oModelForHeader>/Icd}' />
+
+            <Label text='Shipment Date' />
+            <Text
+                text="{path:'oModelForHeader>/ShipmentDate', type: 'sap.ui.model.type.Date', formatOptions: {UTC: true}}"
+            />
+
+            <Label text='Currency' />
+            <Text text='{oModelForHeader>/Currency}' />
+
+            <Label text='Custom Duty Payble' />
+            <Text text='{oModelForHeader>/CustomDutyPayable}' />
+
+            <Label text='IGST' />
+            <Text text='{oModelForHeader>/Igst}' />
+
+            <Label text='Exchange Rate' />
+            <Text text='{oModelForHeader>/ExchangeRate}' />
+
+            <Label text='Container Number' />
+            <Text text='{oModelForHeader>/ContainerNo}' />
+
+            <Label text='LC' />
+            <Text text='{oModelForHeader>/Lc}' />
+
+            <Label text='Created By' />
+            <Text text='{oModelForHeader>/CreatedBy}' />
+
+            <Label text='Created Date' />
+            <Text
+                text="{path:'oModelForHeader>/CreatedOn', type: 'sap.ui.model.type.Date', formatOptions: {UTC: true}}"
+            />
+
+            <Label text='Created time' />
+            <Text
+                text="{path:'oModelForHeader>/CreatedAt', type: 'sap.ui.model.type.Time', formatOptions: {pattern: 'HH:mm:ss'}}"
+            />
+        </form:content>
+    </form:SimpleForm>
+</core:FragmentDefinition>
